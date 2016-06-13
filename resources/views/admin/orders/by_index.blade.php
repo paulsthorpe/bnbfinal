@@ -1,7 +1,7 @@
 @extends('admin.panel.admin_template')
 
 @section('title')
-Applications
+Order {{$order->id}}
 @endsection
 
 @section('admin_content')
@@ -21,9 +21,9 @@ Applications
     @endif
     <br><br>
     @if ($order->status === 1)
-      Status: Filled
+      Status: <p style="color:green;">Completed</p>
     @else
-      Status: INCOMPLETE
+      Status: <p style="color:red;">Incomplete</p>
     @endif
     <br><br>
   </h1>

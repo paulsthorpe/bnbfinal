@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laravel</title>
+        <title>BNB Orders for <?php echo date('M d Y'); ?></title>
         <link rel="stylesheet" href="/css/util_styles.css">
         <link rel="stylesheet" href="/css/app.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

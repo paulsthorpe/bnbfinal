@@ -1,7 +1,7 @@
 @extends('admin.panel.admin_template')
 
 @section('title')
-Applications
+Todays Orders
 @endsection
 
 @section('admin_content')
@@ -34,7 +34,7 @@ Applications
         @endif
           <td>{{$order->id}}</td>
           <td>{{$order->name}}</td>
-          <td>252-903-9014</td>
+          <td>{{$order->phone}}</td>
           <td>{{Carbon\Carbon::parse($order->created_at)->format('h:i:s A')}}</td>
           <td>
             @if ($order->status === 1)

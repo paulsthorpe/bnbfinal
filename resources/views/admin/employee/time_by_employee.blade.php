@@ -1,7 +1,7 @@
 @extends('admin.panel.admin_template')
 
 @section('title')
-Hours for employee
+Hours for {{$employee->first_name}}&nbsp{{$employee->last_name}}
 @endsection
 
 @section('admin_content')

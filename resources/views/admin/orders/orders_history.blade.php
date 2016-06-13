@@ -1,7 +1,7 @@
 @extends('admin.panel.admin_template')
 
 @section('title')
-Applications
+Orders History
 @endsection
 
 @section('admin_content')
@@ -47,6 +47,13 @@ Applications
           <td>
             <a class='btn btn-primary btn-xs' href="/admin/orders/{{$order->id}}">View Details</a>
           </td>
+          <td>
+            <form action="/admin/orders/delete/{{$order->id}}" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <button class='btn btn-danger btn-xs' type="submit" name="submit">Delete</button>
+            </form>
+           </td>
         </tr>
         @endForEach
 
