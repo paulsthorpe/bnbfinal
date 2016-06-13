@@ -4,7 +4,7 @@
         <title>Order Best-N-Burgers!</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="/css/util_styles.css">
+        <!-- <link rel="stylesheet" href="/css/util_styles.css"> -->
         <!-- <script src="js/util_scripts.js" type="text/javascript"></script> -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" charset="utf-8">
