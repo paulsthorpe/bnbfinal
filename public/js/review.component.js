@@ -58,7 +58,7 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
                         .subscribe(function (data) { return console.log(data); });
                     this.orderService.storeCust(this.custInfo);
                     this.orderService.orderComplete = true;
-                    // this.hello.navigate(['Confirm']);
+                    this.hello.navigate(['Confirm']);
                     console.log(this.form.value);
                 };
                 ReviewComponent.prototype.cannotContainSpace = function (control) {

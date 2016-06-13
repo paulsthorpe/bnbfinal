@@ -46,7 +46,7 @@ export class ReviewComponent{
       .subscribe(data => console.log(data));
       this.orderService.storeCust(this.custInfo);
       this.orderService.orderComplete  = true;
-      // this.hello.navigate(['Confirm']);
+      this.hello.navigate(['Confirm']);
       console.log(this.form.value);
     }
 
