@@ -36,8 +36,8 @@ export class ReviewComponent{
 
     sendOrder(){
       this.custInfo = {
-        name: this.theName,
-        phone: this.thePhone
+        name: this.form.value.name,
+        phone: this.form.value.phone
       }
 
       this.orderService.addToOrder(this.form.value);

@@ -49,8 +49,8 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
                 }
                 ReviewComponent.prototype.sendOrder = function () {
                     this.custInfo = {
-                        name: this.theName,
-                        phone: this.thePhone
+                        name: this.form.value.name,
+                        phone: this.form.value.phone
                     };
                     this.orderService.addToOrder(this.form.value);
                     console.log(this.orderService.order);
