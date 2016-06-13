@@ -1,0 +1,14 @@
+// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+//Core partials
+@import "variables";
+@import "mixins";
+@import "base";
+
+// Import Modules
+@import "modules/home";
+@import "modules/user_path";
+@import "modules/order_system";
+@import "modules/admin";
+//home page styles
+// @import "style.css";

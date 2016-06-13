@@ -1,0 +1,41 @@
+<cart></cart>
+
+<div class="config-wrapper">
+
+  <div class="selector-wrapper">
+
+    <div class="selector-header">{{item?.name}} <span>${{orderService.formatPrice(item?.price)}}</span></div>
+
+
+    <button class="selector  btn" *ngFor="let addOn of addOns">
+
+      <span class="item_name">{{addOn.name}}</span>
+
+      <span class="price" *ngIf="addOn.price != 0">+${{orderService.formatPrice(addOn.price)}}</span>
+
+      <input class="item_check" type="checkbox" value="{{addOn.id}}"  (change)="add( addOn.id, addOn.name, addOn.price, $event)">
+
+    </button>
+    <!-- <button class="selector  btn">
+      <div class="qty-mod">
+        <span class="remove-more"(click)="removeQty()"><i class="fa fa-minus"></i></span>
+        <span class="show-qty">{{qty}}</span>
+        <span class="add-more"(click)="addQty()"><i class="fa fa-plus"></i></span>
+        <p *ngIf="qtyMessage">{{qtyMessage}}</p>
+      </div>
+    </button> -->
+
+
+    <a [routerLink]="['Review']">
+
+      <button (click)="create(item?.id, item?.price)" class="btn add" style="text-align:center;">
+        Add Item
+      </button>
+
+    </a>
+
+  </div>
+
+  <!-- <div style="clear: both; height: 150px;"></div> -->
+
+</div>

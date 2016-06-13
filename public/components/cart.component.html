@@ -1,0 +1,37 @@
+<div class="cart-component">
+
+  <h2>Order...</h2>
+  <p class="empty-cart" *ngIf="cart.length<1">There are no items yet...</p>
+
+  <div class="order-contents">
+
+    <div class="item-cell" *ngFor="let item of cart; let i = index">
+
+      <h3>{{item.name}}</h3>
+      <span *ngFor="let topping of item.additionals">{{topping + " / "}}</span>
+
+      <br>
+
+      <div class="item-info">
+
+        <span class="item-total">$ {{orderService.formatPrice(item.total)}}</span>
+        <span (click)="addItem(i)"><i class="fa fa-plus"></i></span>
+        <span (click)="deleteItem(i)"><i class="fa fa-minus"></i></span>
+
+        <div style="clear:both"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="cart-totals" *ngIf="cart.length>0">
+
+
+    <span class="cart-total">Total: $ {{orderService.formatPrice(totalPrice)}}</span>
+    <span class="tax">Tax: $ {{orderService.formatPrice(tax)}}</span>
+    <span class="subtotal">Tax: $ {{orderService.formatPrice(subtotal)}}</span>
+
+  </div>
+
+</div>

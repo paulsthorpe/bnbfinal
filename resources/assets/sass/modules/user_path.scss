@@ -1,0 +1,63 @@
+
+.user_path_container {
+  overflow: hidden;
+  background-color: #000;
+  @include background-image('../images/burgerandfries.jpg');
+
+  .employee_log_in {
+    width: 50%;
+    margin: 0;
+    height:50vh;
+
+    display: inline-block;
+    position: relative;
+  }
+  .admin_log_in {
+    margin: 0;
+    width: 49.75%;
+    height: 50vh;
+
+    display: inline-block;
+    position: relative;
+  }
+  .order_system {
+    height: 49vh;
+
+    position: relative;
+  }
+  .pull_login_down {
+    margin-top: 150px;
+  }
+}
+
+
+.employee-order-screen {
+  font-family: 'Lato', sans-serif;
+
+  @include background-image('../images/bg.jpg');
+  min-height: 100vh;
+  .content-header {
+    text-align: center;
+    position: relative;
+    h1 {
+      color: white;
+    }
+
+    .order-page-logo {
+      width: 40%;
+      height: auto;
+      margin: 10px auto 50px;
+      overflow: hidden;
+      position: relative;
+      img {
+        max-width: 100%;
+        display: inline-block;
+        position: relative;
+      }
+    }
+  }
+
+  .well {
+
+  }
+}

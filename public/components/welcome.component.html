@@ -1,0 +1,36 @@
+<cart >Loading...</cart>
+
+<!-- ngif cart has content -->
+<div class="welcome-component" >
+
+  <div class="welcome" *ngIf="orderService.order.length<1">
+
+    <h3>Welcome!</h3>
+    <p>Select an Item from The list below to begin a new order.</p>
+
+  </div>
+
+  <div class="welcome" *ngIf="orderService.order.length>0">
+
+    <h3>Select a new item or return to order review.</h3>
+
+    <a [routerLink]="['Review']">
+
+      <button class="btn btn-centerX review">
+        <span>Review Order<i class="fa fa-chevron-right"></i></span>
+      </button>
+
+    </a>
+
+  </div>
+
+
+  <div class="selector-wrapper">
+
+    <a [routerLink]="['Options',{type:'burger'}]"><button class="btn btn-centerX"><span>Burgers</span></button></a>
+    <a [routerLink]="['Options',{type:'hotdog'}]"><button class="btn btn-centerX"><span>Hotdogs</span></button></a>
+    <a [routerLink]="['Options',{type:'extras'}]"><button class="btn btn-centerX"><span>Side Items</span></button></a>
+
+  </div>
+
+</div>

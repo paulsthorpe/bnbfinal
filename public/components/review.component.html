@@ -1,0 +1,39 @@
+<div class="review-wrapper">
+
+
+  <a [routerLink]="['Welcome']">
+
+    <button class="btn btn-centerX add-another">
+      <span><i class="fa fa-chevron-left"></i>Add Another Item</span>
+    </button>
+
+  </a>
+  <cart></cart>
+
+
+  <form [ngFormModel]="form" (ngSubmit)="sendOrder()">
+    <div class="form-group">
+      <span class="input-container">
+        <input type="text" class="box-up-input" ngControl="name" #name="ngForm">
+        <label for="name" class="box-up-label">Name</label>
+      </span>
+      <div *ngIf="name.touched && name.errors" class="alert">
+      Order Name Is Required
+      </div>
+      <br>
+    </div>
+    <div class="form-group">
+      <span class="input-container">
+        <input type="text" class="box-up-input" #phone="ngForm" ngControl="phone">
+        <label for="phone" class="box-up-label">Phone #</label>
+      </span>
+      <div *ngIf="phone.touched && phone.errors" class="alert">
+      Please Enter 10 digit number with no special characters ex. 2522552555
+      </div>
+      <br>
+    </div>
+    <button type="submit" [disabled]="!form.valid" class="btn btn-centerX checkout">
+      <span>Checkout <i class="fa fa-chevron-right"></i></span>
+    </button>
+  </form>
+</div>

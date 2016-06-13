@@ -1,0 +1,43 @@
+<cart></cart>
+
+
+<div class="options-wrapper" [ngSwitch]="itemType">
+
+  <div *ngSwitchWhen="'burger'">
+
+    <div class="selector-header">Cheeseburger</div>
+
+    <a [routerLink]="['Config', {item: 1 }]"><button class="btn btn-centerX"><span>Single</span></button></a>
+    <a [routerLink]="['Config', {item: 2 }]"><button class="btn btn-centerX"><span>Double</span></button></a>
+
+    <div class="selector-header">Hamburger</div>
+
+    <a [routerLink]="['Config', {item: 3 }]"><button class="btn btn-centerX"><span>Single</span></button></a>
+    <a [routerLink]="['Config', {item: 4 }]"><button class="btn btn-centerX"><span>Double</span></button></a>
+
+  </div>
+
+  <div *ngSwitchWhen="'hotdog'">
+
+    <div class="selector-header">Hotdogs</div>
+
+    <a [routerLink]="['Config', {item: 6 }]"><button class="btn btn-centerX"><span>Nathans</span></button></a>
+    <a [routerLink]="['Config', {item: 5 }]"><button class="btn btn-centerX"><span>Briteleaf</span></button></a>
+
+  </div>
+
+  <div *ngSwitchWhen="'extras'">
+
+    <p>Gotcha! Coming Soon Though!</p>
+
+    <a [routerLink]="['Welcome']">Return</a>
+    <!-- <a [routerLink]="['config', {item: 7 }]"><div class="selector">Fries</div></a> -->
+    <!-- <a [routerLink]="['config', {item: }]"><div class="selector">Drinks</div></a> -->
+    <!-- <a [routerLink]="['config', {item: }]"><div class="selector">Lemonade/Orangeade</div></a> -->
+    <!-- <a [routerLink]="['config', {item: }]"><div class="selector">Dippin Dots</div></a> -->
+
+  </div>
+
+  <div style="clear: both"></div>
+
+</div>
