@@ -23,12 +23,9 @@
 *
 */
 
-
-
-Route::get('/bridge', function() {
-
+Route::get('/', function () {
+    return view('welcome');
 });
-
 
 Route::get('/store_login', function () {
     return view('admin.login');
@@ -40,26 +37,16 @@ Route::get('/user_path', function () {
 
 
 
+
 /**
 *
 *Order System and Order System API Routes
 *
 */
 
-
-
-
-// Order App
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/order', function () {
     return view('order_app');
 });
-
-
 
 //API Routes
 
@@ -72,18 +59,18 @@ Route::get('/getItems/{item}', function (App\MenuItem $item) {
   return $item;
 });
 
-
-
 Route::get('/getAddOns', function () {
   $items = App\AddOn::all();
   return $items;
 });
 
-
-
 Route::post('/recieveAPI', 'OrdersController@store');
 
+Route::post('/getOrders', 'OrdersController@getOrders');
 
+Route::post('/getOrdersClient', 'OrdersController@getOrdersClient');
+
+Route::post('/getSpecificAddOns', 'OrdersController@getSpecificAddOns');
 
 
 
@@ -116,6 +103,7 @@ Route::get('/admin', function () {
  *Admin/Sales Routes
  *
  */
+
 Route::get('/admin/sales', 'SalesController@index');
 
 Route::post('/admin/sales/sort', 'SalesController@sort');
@@ -142,6 +130,7 @@ Route::delete('/admin/sales/destroy/{id}', 'SalesController@delete');
  *
  *
  */
+
 Route::get('/admin/employees', 'EmployeesController@index');
 
 //add
@@ -161,6 +150,8 @@ Route::patch('/admin/employee/{employee}', 'EmployeesController@update');
 Route::get('/admin/employee/delete/{employee}', 'EmployeesController@check_delete');
 
 Route::delete('/admin/employee/{employee}', 'EmployeesController@delete');
+
+
 
 
 /**
@@ -184,19 +175,21 @@ Route::get('/admin/period_hours/{employee}/add', 'TimeController@add_hours');
 Route::delete('/admin/period_hours/delete/{id}', 'TimeController@delete_hours');
 
 
+
+
 /**
  * Admin/Application Routes
  *
  *
  */
+
 Route::get('/admin/view_apps', 'ApplicationsController@index');
 
 Route::get('/admin/view_apps/{id}', 'ApplicationsController@view_by_index');
 
 Route::get('/admin/view_apps/{id}/delete', 'ApplicationsController@delete');
 
-//Route::get('/admin/employee_time/{id}/edit', 'ApplicationsController@edit_hours');
-//ADD APP!!!
+
 
 
 /**
@@ -224,7 +217,6 @@ Route::get('/admin/view_apps/{id}/delete', 'ApplicationsController@delete');
 
 
 
-
-Route::get('/admin/applications', function () {
-    return view('admin.panel.applications_list');
-});
+ Route::get('/admin/applications', function () {
+     return view('admin.panel.applications_list');
+ });

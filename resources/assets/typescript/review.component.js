@@ -37,14 +37,17 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
             }],
         execute: function() {
             ReviewComponent = (function () {
-                function ReviewComponent(_httpService, orderService, hello) {
+                function ReviewComponent(_httpService, orderService, router) {
                     this._httpService = _httpService;
                     this.orderService = orderService;
-                    this.hello = hello;
-                    // private hello : Router;
+                    this.router = router;
                     this.form = new common_1.ControlGroup({
-                        name: new common_1.Control('', common_1.Validators.compose([common_1.Validators.required, this.cannotContainSpecialChars])),
-                        phone: new common_1.Control('', common_1.Validators.compose([common_1.Validators.required, this.cannotContainSpace, this.cannotContainSpecialChars, this.phoneLength])),
+                        name: new common_1.Control('', common_1.Validators.compose([common_1.Validators.required,
+                            this.cannotContainSpecialChars])),
+                        phone: new common_1.Control('', common_1.Validators.compose([common_1.Validators.required,
+                            this.cannotContainSpace,
+                            this.cannotContainSpecialChars,
+                            this.phoneLength])),
                     });
                 }
                 ReviewComponent.prototype.sendOrder = function () {
@@ -53,13 +56,11 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
                         phone: this.form.value.phone
                     };
                     this.orderService.addToOrder(this.form.value);
-                    console.log(this.orderService.order);
                     this._httpService.postJSON(this.orderService.order)
                         .subscribe(function (data) { return console.log(data); });
                     this.orderService.storeCust(this.custInfo);
                     this.orderService.orderComplete = true;
-                    this.hello.navigate(['Confirm']);
-                    console.log(this.form.value);
+                    this.router.navigate(['Confirm']);
                 };
                 ReviewComponent.prototype.cannotContainSpace = function (control) {
                     if (control.value.indexOf(' ') >= 0) {

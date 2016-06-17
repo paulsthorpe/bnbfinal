@@ -49,8 +49,6 @@ System.register(['@angular/core', '@angular/router-deprecated', './http.service'
                 function AppComponent(_httpService) {
                     this._httpService = _httpService;
                 }
-                AppComponent.prototype.ngOnInit = function () {
-                };
                 AppComponent = __decorate([
                     router_deprecated_1.RouteConfig([
                         { path: '/order', name: 'Welcome', component: welcomeComponent_component_1.WelcomeComponent },
@@ -67,7 +65,7 @@ System.register(['@angular/core', '@angular/router-deprecated', './http.service'
                         selector: 'order-app',
                         templateUrl: './components/master.component.html',
                         directives: [router_deprecated_1.ROUTER_DIRECTIVES],
-                        providers: [router_deprecated_1.ROUTER_PROVIDERS, http_service_1.RequestService, http_1.HTTP_PROVIDERS, order_service_1.OrderService],
+                        providers: [router_deprecated_1.ROUTER_PROVIDERS, http_service_1.RequestService, http_1.HTTP_PROVIDERS, order_service_1.OrderService]
                     }), 
                     __metadata('design:paramtypes', [http_service_1.RequestService])
                 ], AppComponent);

@@ -28,6 +28,12 @@ System.register(['rxjs/add/operator/map', '@angular/core'], function(exports_1, 
                     this.itemPrices = [];
                     this.contactInfo = [];
                     this.orderComplete = false;
+                    this.addOns = [];
+                    //store relevant config item data for display in angular cart
+                    this.cartAdditionals = [];
+                    this.cartPrices = [];
+                    //store relevant config item data for api
+                    this.apiAdditionals = [];
                 }
                 OrderService.prototype.addToOrder = function (item) {
                     this.order.push(item);
@@ -46,6 +52,56 @@ System.register(['rxjs/add/operator/map', '@angular/core'], function(exports_1, 
                         name: object.name,
                         phone: object.phone,
                     };
+                };
+                ////////////CONFIGITEM METHODs
+                OrderService.prototype.add = function (idValue, nameValue, prices, event) {
+                    //if checked store addOn ids in array to send to api
+                    if (event.target.checked) {
+                        this.apiAdditionals.push(idValue);
+                    }
+                    else if (!event.target.checked) {
+                        var index = this.apiAdditionals.indexOf(idValue);
+                        this.apiAdditionals.splice(index, 1);
+                    }
+                    //log for testing
+                    // console.log(this.apiAdditionals);
+                    //store addOn names to array to use for readable cart values
+                    if (event.target.checked) {
+                        this.cartAdditionals.push(nameValue);
+                        this.cartPrices.push(prices);
+                    }
+                    else if (!event.target.checked) {
+                        var index = this.cartAdditionals.indexOf(nameValue);
+                        this.cartAdditionals.splice(index, 1);
+                        this.cartPrices.splice(index, 1);
+                    }
+                    // console.log(this.cartAdditionals);
+                    // console.log(this.cartPrices);
+                };
+                OrderService.prototype.create = function (id, price, item) {
+                    this.cartPrices.push(price);
+                    this.total = this.cartPrices.reduce(function (total, num) { return total + num; });
+                    // !!!!!!!!!!!!!!!!!!!FOR API!!!!!!!!!!!!!!!!!!!!!!!//
+                    //set interface with selected menuitem and addons
+                    this.apiItem = {
+                        item_id: item.id,
+                        additionals: this.apiAdditionals
+                    };
+                    //push interface object into API array
+                    this.addToOrder(this.apiItem);
+                    // console.log(this.orderService.order);
+                    // !!!!!!!!!!!!!!!!!!!FOR CART!!!!!!!!!!!!!!!!!!!!!!!//
+                    //set interface with selected menuitem and addons
+                    this.cartItem = {
+                        name: item.name,
+                        additionals: this.cartAdditionals,
+                        prices: this.cartPrices,
+                        total: this.total,
+                    };
+                    //push interface object into API array
+                    this.addToCart(this.cartItem);
+                    this.itemPrices.push(this.total);
+                    // console.log(this.orderService.cart);
                 };
                 OrderService = __decorate([
                     core_1.Injectable(), 

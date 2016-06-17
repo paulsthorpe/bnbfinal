@@ -39,8 +39,6 @@ export class CartComponent {
       this.subtotal = this.tax + this.totalPrice;
     }
 
-
-
   }
 
   deleteItem(item){
@@ -65,8 +63,5 @@ export class CartComponent {
     this.tax = this.orderService.calcTax(this.totalPrice);
     this.subtotal = this.tax + this.totalPrice;
   }
-
-
-
 
 }

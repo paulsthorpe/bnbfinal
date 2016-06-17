@@ -13,18 +13,18 @@ export class RequestService {
   }
 
   getMenuItem(id) {
-    return this._http.get("http://paul-webdev.com/getItems/"+id)
+    return this._http.get("http://localhost:8000/getItems/"+id)
       .map(res => res.json());
   }
 
   getMenuItems() {
-    return this._http.get("http://paul-webdev.com/getItems")
+    return this._http.get("http://localhost:8000/getItems")
       .map(res => res.json());
   }
 
 
   getAddOns() {
-    return this._http.get("http://paul-webdev.com/getAddOns")
+    return this._http.get("http://localhost:8000/getAddOns")
       .map(res => res.json());
   }
 
@@ -34,13 +34,67 @@ export class RequestService {
   }
 
   postJSON(item) {
+
     let json = JSON.stringify(item);
+
     let headers = new Headers();
+
     headers.append('Content-type', 'application/json');
+
     headers.append('X-CSRF-TOKEN', this.getToken());
-    return this._http.post('http://paul-webdev.com/recieveAPI', json , {
+
+    return this._http.post('http://localhost:8000/recieveAPI', json , {
       headers: headers
     }).map(res => res.json());
+
+  }
+
+  getOrders(item) {
+
+    let json = JSON.stringify(item);
+
+    let headers = new Headers();
+
+    headers.append('Content-type', 'application/json');
+
+    headers.append('X-CSRF-TOKEN', this.getToken());
+
+    return this._http.post('http://localhost:8000/getOrders', json , {
+      headers: headers
+    }).map(res => res.json());
+
+  }
+
+  getOrdersClient(item) {
+
+    let json = JSON.stringify(item);
+
+    let headers = new Headers();
+
+    headers.append('Content-type', 'application/json');
+
+    headers.append('X-CSRF-TOKEN', this.getToken());
+
+    return this._http.post('http://localhost:8000/getOrdersClient', json , {
+      headers: headers
+    }).map(res => res.json());
+
+  }
+
+  getSpecificAddOns(item) {
+
+    let json = JSON.stringify(item);
+
+    let headers = new Headers();
+
+    headers.append('Content-type', 'application/json');
+
+    headers.append('X-CSRF-TOKEN', this.getToken());
+
+    return this._http.post('http://localhost:8000/getSpecificAddOns', json , {
+      headers: headers
+    }).map(res => res.json());
+
   }
 
 

@@ -24,30 +24,42 @@ export class ReviewComponent{
     theName: string;
     thePhone: string;
     custInfo: CustInfo;
-    // private hello : Router;
+
     form = new ControlGroup({
-            name: new Control('', Validators.compose([Validators.required,this.cannotContainSpecialChars])),
-            phone: new Control('', Validators.compose([Validators.required,this.cannotContainSpace, this.cannotContainSpecialChars, this.phoneLength])),
+
+      name: new Control('', Validators.compose([Validators.required,
+        this.cannotContainSpecialChars])),
+
+      phone: new Control('', Validators.compose([Validators.required,
+        this.cannotContainSpace,
+        this.cannotContainSpecialChars,
+        this.phoneLength])),
     });
 
-    constructor(private _httpService: RequestService, public orderService : OrderService, private hello : Router){
+    constructor(private _httpService: RequestService, public orderService : OrderService, private router : Router){
 
     }
 
     sendOrder(){
+
       this.custInfo = {
+
         name: this.form.value.name,
         phone: this.form.value.phone
+
       }
 
       this.orderService.addToOrder(this.form.value);
-      console.log(this.orderService.order);
+
       this._httpService.postJSON(this.orderService.order)
       .subscribe(data => console.log(data));
+
       this.orderService.storeCust(this.custInfo);
+
       this.orderService.orderComplete  = true;
-      this.hello.navigate(['Confirm']);
-      console.log(this.form.value);
+
+      this.router.navigate(['Confirm']);
+
     }
 
     cannotContainSpace(control: Control){

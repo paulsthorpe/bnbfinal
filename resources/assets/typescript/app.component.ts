@@ -1,5 +1,5 @@
 import {bootstrap} from '@angular/platform-browser-dynamic';
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
 import {RequestService} from './http.service';
 import {OrderService} from './order.service';
@@ -31,17 +31,12 @@ import {ConfirmComponent} from './confirm.component';
     selector: 'order-app',
     templateUrl: './components/master.component.html',
     directives: [ROUTER_DIRECTIVES],
-    providers: [ROUTER_PROVIDERS, RequestService, HTTP_PROVIDERS, OrderService],
-    // bindings: []
+    providers: [ROUTER_PROVIDERS, RequestService, HTTP_PROVIDERS, OrderService]
 })
 
 export class AppComponent{
+
     constructor(private _httpService: RequestService){
     }
-
-    ngOnInit(){
-
-    }
-
 
   }

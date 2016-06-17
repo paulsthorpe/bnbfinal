@@ -53,80 +53,14 @@ System.register(['@angular/core', './cart.component', './http.service', './order
                         .subscribe(function (data) { return _this.item = data; });
                     this._httpService.getAddOns()
                         .subscribe(function (data) { return _this.addOns = data; });
-                    console.log(this.addOns);
+                    // console.log(this.addOns);
                     this.qty = 1;
                 };
                 ConfigItemComponent.prototype.add = function (idValue, nameValue, prices, event) {
-                    //if checked store addOn ids in array to send to api
-                    if (event.target.checked) {
-                        this.apiAdditionals.push(idValue);
-                    }
-                    else if (!event.target.checked) {
-                        var index = this.apiAdditionals.indexOf(idValue);
-                        this.apiAdditionals.splice(index, 1);
-                    }
-                    //log for testing
-                    console.log(this.apiAdditionals);
-                    //store addOn names to array to use for readable cart values
-                    if (event.target.checked) {
-                        this.cartAdditionals.push(nameValue);
-                        this.cartPrices.push(prices);
-                    }
-                    else if (!event.target.checked) {
-                        var index = this.cartAdditionals.indexOf(nameValue);
-                        this.cartAdditionals.splice(index, 1);
-                        this.cartPrices.splice(index, 1);
-                    }
-                    console.log(this.cartAdditionals);
-                    console.log(this.cartPrices);
+                    this.orderService.add(idValue, nameValue, prices, event);
                 };
                 ConfigItemComponent.prototype.create = function (id, price) {
-                    this.cartPrices.push(price);
-                    this.total = this.cartPrices.reduce(function (total, num) { return total + num; });
-                    // !!!!!!!!!!!!!!!!!!!FOR API!!!!!!!!!!!!!!!!!!!!!!!//
-                    //set interface with selected menuitem and addons
-                    this.apiItem = {
-                        item_id: this.item.id,
-                        additionals: this.apiAdditionals
-                    };
-                    //push interface object into API array
-                    this.orderService.addToOrder(this.apiItem);
-                    console.log(this.orderService.order);
-                    // !!!!!!!!!!!!!!!!!!!FOR CART!!!!!!!!!!!!!!!!!!!!!!!//
-                    //set interface with selected menuitem and addons
-                    this.cartItem = {
-                        name: this.item.name,
-                        additionals: this.cartAdditionals,
-                        prices: this.cartPrices,
-                        total: this.total,
-                    };
-                    //push interface object into API array
-                    this.orderService.addToCart(this.cartItem);
-                    this.orderService.itemPrices.push(this.total);
-                    console.log(this.orderService.cart);
-                };
-                ConfigItemComponent.prototype.countAndCreate = function (qty, id, price) {
-                    for (var i = 0; i < qty; i++) {
-                        this.create(id, price);
-                    }
-                };
-                ConfigItemComponent.prototype.setTotal = function () {
-                };
-                ConfigItemComponent.prototype.addQty = function () {
-                    if (this.qty < 5) {
-                        this.qty++;
-                    }
-                    else {
-                        this.qtyMessage = "Cannot Add More Than 5 Identical Items At Once.";
-                    }
-                };
-                ConfigItemComponent.prototype.removeQty = function () {
-                    if (this.qty > 1) {
-                        this.qty--;
-                    }
-                    else {
-                        this.qtyMessage = "";
-                    }
+                    this.orderService.create(id, price, this.item);
                 };
                 ConfigItemComponent = __decorate([
                     core_1.Component({

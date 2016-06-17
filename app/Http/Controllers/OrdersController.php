@@ -178,6 +178,60 @@ class OrdersController extends Controller
 
   }
 
+  public function getOrders(Request $request){
+    $orders = Order::with('orderItems')->where('phone', $request->phone)->get();
+    $allOrders = [];
+    foreach($orders as $order) {
+      $id = $order->id;
+      $completeOrder = ['order_id' => $id,'items' => []];
+      foreach($order->orderItems as $configItem){
+        $object = [];
+        foreach($configItem->menuItems as $menu){
+          $item = $menu->id;
+        }
+        $toppings = [];
+        foreach($configItem->addOns as $add) {
+          array_push($toppings , $add->id);
+        }
+        $object = ['item_id' => $item, 'additionals' => $toppings];
+        array_push($completeOrder['items'], $object);
+      }
+      array_push($allOrders, $completeOrder);
+    }
+    return response()->json($allOrders);
+  }
 
+  public function getOrdersClient(Request $request){
+    $orders = Order::with('orderItems')->where('phone', $request->phone)->get();
+    $allOrders = [];
+    foreach($orders as $order) {
+      $id = $order->id;
+      $completeOrder = ['order_id' => $id, 'items' => []];
+      foreach($order->orderItems as $configItem){
+        $object = [];
+        foreach($configItem->menuItems as $menu){
+          $item = $menu->name;
+        }
+        $toppings = [];
+        foreach($configItem->addOns as $add) {
+          array_push($toppings , $add->name);
+        }
+        $object = ['item_id' => $item, 'additionals' => $toppings];
+        array_push($completeOrder['items'], $object);
+      }
+      array_push($allOrders, $completeOrder);
+    }
+    return response()->json($allOrders);
+  }
+
+  public function getSpecificAddOns(Request $request){
+    $jsonp = response()->json($request);
+    //remove metadata/headers/csrftoken
+    $cleanedJSONP = substr($jsonp, stripos($jsonp, "["));
+    //create array from json string
+    $json = json_decode($cleanedJSONP);
+    $selected = AddOn::whereIn('id', $json)->get();
+    return response()->json($selected);
+  }
 
 }

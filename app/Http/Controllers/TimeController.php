@@ -26,8 +26,11 @@ class TimeController extends Controller
 
 
   public function period_hours(){
+
     $employees = Employee::all();
+
     return view('admin.employee.period_hours', compact('employees'));
+
   }
 
 
@@ -42,8 +45,11 @@ class TimeController extends Controller
 
 
   public function employee_time(Employee $employee){
+
     $time_records = $employee->time;
+
     return view('admin.employee.time_by_employee', compact('employee', 'time_records'));
+
   }
 
 
@@ -60,6 +66,7 @@ class TimeController extends Controller
     Timeclock::addRecord($request);
 
     return back();
+    
   }
 
 
@@ -92,10 +99,15 @@ class TimeController extends Controller
 
 
   public function log_time(Request $request){
+
     $employee = Employee::find($request->employee_id);
+
     Timeclock::clockIn($employee);
+
     return redirect('/user_path');
+
     //flash employee success/fail
+
   }
 
 

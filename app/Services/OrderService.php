@@ -53,42 +53,69 @@ class OrderService {
 
 
             //create a variabe to hold all items prices
+
             $total = 0;
             $tax = 0;
+
             //get jsonp from angular2
+
             $jsonp = response()->json($request);
+
             //remove metadata/headers/csrftoken
+
             $cleanedJSONP = substr($jsonp, stripos($jsonp, "["));
+
             //create array from json string
+
             $json = json_decode($cleanedJSONP);
+
             //instantiate new order
+
             $order = new Order;
+
             //save immediately, to allow attachment of products
+
             $order->save();
+
             //for each json object
+
             foreach($json as $key => $value) {
+
               //test if the object contains product data or customer info
+
               if(isset($value->item_id)){
+
                 //instantiate a new configitem to allow pivot table records
                 //and relationships to be created
+
                 $item = new ConfigItem;
+
                 //save immediately to allow attachment
+
                 $item->save();
                 $it = MenuItem::find($value->item_id);
                 $total += $it->price;
+
                 foreach($value->additionals as $topping ){
                   $item->addOns()->attach($topping);
                   $top = AddOn::find($topping);
                   $total += $top->price;
                 } //foreach topping value in object->array
+
                 $item->menuItems()->attach($value->item_id);
                 $order->orderItems()->save($item);
+
               }/*if object is item data*/
+
               else {
+
                 $order->name = $value->name;
                 $order->phone = $value->phone;
+
               }//else if object is cust data
+
             }//foreach json object
+
               $order->subtotal = $total;
               $order->tax = $total * 0.0675;
               $order->total = $total * 1.0675;
