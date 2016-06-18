@@ -33,8 +33,11 @@ System.register(['@angular/core', '@angular/http', '@angular/router-deprecated',
                 }
                 CartComponent.prototype.ngOnInit = function () {
                     this.cart = this.orderService.cart;
-                    if (this.orderService.itemPrices.length > 0) {
+                    console.log(1);
+                    if (this.cart.length > 0) {
+                        console.log(1);
                         this.totalPrice = this.orderService.itemPrices.reduce(function (total, num) { return total + num; });
+                        console.log(this.totalPrice);
                         this.tax = this.orderService.calcTax(this.totalPrice);
                         this.subtotal = this.tax + this.totalPrice;
                     }

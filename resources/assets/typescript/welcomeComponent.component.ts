@@ -2,7 +2,7 @@ import {bootstrap} from '@angular/platform-browser-dynamic';
 import {Component, OnInit} from '@angular/core';
 import {CartComponent} from './cart.component';
 import {OrderService} from './order.service';
-import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
+import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Router } from '@angular/router-deprecated';
 import {HTTP_PROVIDERS} from '@angular/http';
 import {RequestService} from './http.service';
 import {ControlGroup, Control, Validators} from '@angular/common';
@@ -43,7 +43,8 @@ export class WelcomeComponent implements OnInit{
 
   constructor(private _httpService: RequestService,
     public orderService : OrderService,
-    private _validators : ValidatorService){
+    private _validators : ValidatorService,
+    private router : Router){
 
   }
 
@@ -95,13 +96,12 @@ export class WelcomeComponent implements OnInit{
       this.pastOrders.push(pastOrder);
 
     }
-      // this.pastOrders = allOrders;
 
 
-      console.log(this.pastOrders);
   }
 
   orgDataClient(data){
+    console.log(data);
     let length = data.length;
 
     for(var i = 0; i < length; i++ ){
@@ -118,7 +118,8 @@ export class WelcomeComponent implements OnInit{
           toppings.push(data[i].items[a].additionals[b]);
         }
 
-        oItem['item_id'] = data[i].items[a].item_id;
+        oItem['name'] = data[i].items[a].name;
+        oItem['price'] = data[i].items[a].price;
         oItem['additionals'] = toppings;
 
         col.push(oItem);
@@ -132,10 +133,6 @@ export class WelcomeComponent implements OnInit{
       this.pastOrdersClient.push(pastOrder);
 
     }
-      // this.pastOrders = allOrders;
-
-
-      // console.log(this.pastOrdersClient);
   }
 
   retrieveOrderState(orderIndex){
@@ -147,39 +144,47 @@ export class WelcomeComponent implements OnInit{
         .subscribe(data => this.applyOrder(data, orderIndex, index));
     }
 
+    this.router.navigate(['Review']);
+
   }
 
   applyOrder(data, orderIndex, itemIndex){
     let length = data.length;
     this.orderService.apiAdditionals = [];
-
+    this.orderService.cartAdditionals = [];
+    this.orderService.cartPrices = [];
+    this.orderService.cartPrices.push(this.pastOrdersClient[orderIndex].items[itemIndex].price);
     for(var i = 0; i < length; i++){
 
       this.orderService.apiAdditionals.push(data[i].id);
-
       this.orderService.cartAdditionals.push(data[i].name);
       this.orderService.cartPrices.push(data[i].price);
       this.orderService.total = this.orderService.cartPrices.reduce(function(total,num){return total+num});
 
     }
 
-  this.apiItem = {
-    item_id: this.pastOrders[orderIndex].items[itemIndex].item_id,
-    additionals: this.orderService.apiAdditionals
-  }
 
-  this.cartItem = {
-    name : this.pastOrders[orderIndex].items[itemIndex].item_id,
-    additionals : this.orderService.cartAdditionals,
-    prices: this.orderService.cartPrices,
-    total: this.orderService.total,
-  };
+    this.apiItem = {
+      item_id: this.pastOrders[orderIndex].items[itemIndex].item_id,
+      additionals: this.orderService.apiAdditionals
+    }
 
-  this.orderService.addToOrder(this.apiItem);
-  this.orderService.addToCart(this.cartItem);
-  this.orderService.itemPrices.push(this.orderService.total)
-  console.log(this.orderService.order);
+    this.cartItem = {
+      name : this.pastOrdersClient[orderIndex].items[itemIndex].name,
+      additionals : this.orderService.cartAdditionals,
+      prices: this.orderService.cartPrices,
+      total: this.orderService.total,
+    }
+
+
+
+
+    this.orderService.addToOrder(this.apiItem);
+    this.orderService.addToCart(this.cartItem);
+    this.orderService.itemPrices.push(this.orderService.total);
+
 }
+
 }
 
 export interface Phone {

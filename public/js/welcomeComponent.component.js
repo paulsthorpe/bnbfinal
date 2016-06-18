@@ -37,10 +37,11 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
             }],
         execute: function() {
             WelcomeComponent = (function () {
-                function WelcomeComponent(_httpService, orderService, _validators) {
+                function WelcomeComponent(_httpService, orderService, _validators, router) {
                     this._httpService = _httpService;
                     this.orderService = orderService;
                     this._validators = _validators;
+                    this.router = router;
                     this.pastOrders = [];
                     this.pastOrdersClient = [];
                     this.form = new common_1.ControlGroup({
@@ -83,10 +84,9 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
                         pastOrder['items'] = col;
                         this.pastOrders.push(pastOrder);
                     }
-                    // this.pastOrders = allOrders;
-                    console.log(this.pastOrders);
                 };
                 WelcomeComponent.prototype.orgDataClient = function (data) {
+                    console.log(data);
                     var length = data.length;
                     for (var i = 0; i < length; i++) {
                         var pastOrder = [];
@@ -99,7 +99,8 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
                             for (var b = 0; b < tops; b++) {
                                 toppings.push(data[i].items[a].additionals[b]);
                             }
-                            oItem['item_id'] = data[i].items[a].item_id;
+                            oItem['name'] = data[i].items[a].name;
+                            oItem['price'] = data[i].items[a].price;
                             oItem['additionals'] = toppings;
                             col.push(oItem);
                         }
@@ -107,8 +108,6 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
                         pastOrder['items'] = col;
                         this.pastOrdersClient.push(pastOrder);
                     }
-                    // this.pastOrders = allOrders;
-                    // console.log(this.pastOrdersClient);
                 };
                 WelcomeComponent.prototype.retrieveOrderState = function (orderIndex) {
                     var _this = this;
@@ -122,10 +121,14 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
                     for (var itemIndex = 0; itemIndex < total; itemIndex++) {
                         _loop_1();
                     }
+                    this.router.navigate(['Review']);
                 };
                 WelcomeComponent.prototype.applyOrder = function (data, orderIndex, itemIndex) {
                     var length = data.length;
                     this.orderService.apiAdditionals = [];
+                    this.orderService.cartAdditionals = [];
+                    this.orderService.cartPrices = [];
+                    this.orderService.cartPrices.push(this.pastOrdersClient[orderIndex].items[itemIndex].price);
                     for (var i = 0; i < length; i++) {
                         this.orderService.apiAdditionals.push(data[i].id);
                         this.orderService.cartAdditionals.push(data[i].name);
@@ -137,7 +140,7 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
                         additionals: this.orderService.apiAdditionals
                     };
                     this.cartItem = {
-                        name: this.pastOrders[orderIndex].items[itemIndex].item_id,
+                        name: this.pastOrdersClient[orderIndex].items[itemIndex].name,
                         additionals: this.orderService.cartAdditionals,
                         prices: this.orderService.cartPrices,
                         total: this.orderService.total,
@@ -145,7 +148,6 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
                     this.orderService.addToOrder(this.apiItem);
                     this.orderService.addToCart(this.cartItem);
                     this.orderService.itemPrices.push(this.orderService.total);
-                    console.log(this.orderService.order);
                 };
                 WelcomeComponent = __decorate([
                     core_1.Component({
@@ -155,7 +157,7 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
                         providers: [validators_service_1.ValidatorService],
                         inputs: ['orderService.order', 'pastOrdersClient']
                     }), 
-                    __metadata('design:paramtypes', [http_service_1.RequestService, order_service_1.OrderService, validators_service_1.ValidatorService])
+                    __metadata('design:paramtypes', [http_service_1.RequestService, order_service_1.OrderService, validators_service_1.ValidatorService, router_deprecated_1.Router])
                 ], WelcomeComponent);
                 return WelcomeComponent;
             }());

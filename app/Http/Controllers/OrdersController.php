@@ -211,12 +211,14 @@ class OrdersController extends Controller
         $object = [];
         foreach($configItem->menuItems as $menu){
           $item = $menu->name;
+          $item_id = $menu->id;
+          $price = $menu->price;
         }
         $toppings = [];
         foreach($configItem->addOns as $add) {
           array_push($toppings , $add->name);
         }
-        $object = ['item_id' => $item, 'additionals' => $toppings];
+        $object = ['name' => $item, 'additionals' => $toppings, 'price' => $price];
         array_push($completeOrder['items'], $object);
       }
       array_push($allOrders, $completeOrder);
