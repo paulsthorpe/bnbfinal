@@ -13,18 +13,18 @@ export class RequestService {
   }
 
   getMenuItem(id) {
-    return this._http.get("http://localhost:8000/getItems/"+id)
+    return this._http.get("http://paul-webdev.com/getItems/"+id)
       .map(res => res.json());
   }
 
   getMenuItems() {
-    return this._http.get("http://localhost:8000/getItems")
+    return this._http.get("http://paul-webdev.com/getItems")
       .map(res => res.json());
   }
 
 
   getAddOns() {
-    return this._http.get("http://localhost:8000/getAddOns")
+    return this._http.get("http://paul-webdev.com/getAddOns")
       .map(res => res.json());
   }
 
@@ -43,7 +43,7 @@ export class RequestService {
 
     headers.append('X-CSRF-TOKEN', this.getToken());
 
-    return this._http.post('http://localhost:8000/recieveAPI', json , {
+    return this._http.post('http://paul-webdev.com/recieveAPI', json , {
       headers: headers
     }).map(res => res.json());
 
@@ -59,7 +59,7 @@ export class RequestService {
 
     headers.append('X-CSRF-TOKEN', this.getToken());
 
-    return this._http.post('http://localhost:8000/getOrders', json , {
+    return this._http.post('http://paul-webdev.com/getOrders', json , {
       headers: headers
     }).map(res => res.json());
 
@@ -75,7 +75,7 @@ export class RequestService {
 
     headers.append('X-CSRF-TOKEN', this.getToken());
 
-    return this._http.post('http://localhost:8000/getOrdersClient', json , {
+    return this._http.post('http://paul-webdev.com/getOrdersClient', json , {
       headers: headers
     }).map(res => res.json());
 
@@ -91,7 +91,7 @@ export class RequestService {
 
     headers.append('X-CSRF-TOKEN', this.getToken());
 
-    return this._http.post('http://localhost:8000/getSpecificAddOns', json , {
+    return this._http.post('http://paul-webdev.com/getSpecificAddOns', json , {
       headers: headers
     }).map(res => res.json());
 

@@ -49,8 +49,8 @@
 
   </div>
 
-  <div *ngIf="pastOrdersClient">
-    <div *ngFor="let order of pastOrdersClient; let i = index">
+  <div *ngIf="reorderService.pastOrdersClient">
+    <div *ngFor="let order of reorderService.pastOrdersClient; let i = index">
       <p (click)="retrieveOrderState(i)">Order Id: {{order.order_id}}</p>
       <div *ngFor="let item of order.items">
         <h3>Item: {{item.name}}</h3>
