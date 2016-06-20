@@ -11,9 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-      factory('App\Employee', 20)->create();
-      factory('App\Sale', 20)->create();
-      factory('App\TimeRecord', 20)->create();
+      // factory('App\Employee', 20)->create();
+      // factory('App\Sale', 20)->create();
+      // factory('App\TimeRecord', 20)->create();
       $this->call(menuItems::class);
       $this->call(addOns::class);
 
