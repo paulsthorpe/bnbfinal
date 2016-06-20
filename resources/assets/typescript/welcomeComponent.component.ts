@@ -9,9 +9,6 @@ import {RequestService} from './http.service';
 import {ControlGroup, Control, Validators} from '@angular/common';
 import {ValidatorService} from './validators.service';
 
-
-
-
 @Component({
     selector: 'welcome',
     templateUrl: './components/welcome.component.html',
@@ -23,8 +20,6 @@ import {ValidatorService} from './validators.service';
 export class WelcomeComponent implements OnInit{
 
   phone: Phone;
-
-
   form = new ControlGroup({
 
     phoneLookup: new Control('',
@@ -43,7 +38,6 @@ export class WelcomeComponent implements OnInit{
 
   ngOnInit(){
   }
-
 
   getOrders(){
     this.phone = {
