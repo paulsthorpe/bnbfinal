@@ -28,15 +28,15 @@ System.register(['@angular/http', 'rxjs/add/operator/map', '@angular/core'], fun
                     this._http = _http;
                 }
                 RequestService.prototype.getMenuItem = function (id) {
-                    return this._http.get("http://paul-webdev.com/getItems/" + id)
+                    return this._http.get("http:///getItems/" + id)
                         .map(function (res) { return res.json(); });
                 };
                 RequestService.prototype.getMenuItems = function () {
-                    return this._http.get("http://paul-webdev.com/getItems")
+                    return this._http.get("http:///getItems")
                         .map(function (res) { return res.json(); });
                 };
                 RequestService.prototype.getAddOns = function () {
-                    return this._http.get("http://paul-webdev.com/getAddOns")
+                    return this._http.get("http:///getAddOns")
                         .map(function (res) { return res.json(); });
                 };
                 RequestService.prototype.getToken = function () {
@@ -48,7 +48,7 @@ System.register(['@angular/http', 'rxjs/add/operator/map', '@angular/core'], fun
                     var headers = new http_2.Headers();
                     headers.append('Content-type', 'application/json');
                     headers.append('X-CSRF-TOKEN', this.getToken());
-                    return this._http.post('http://paul-webdev.com/recieveAPI', json, {
+                    return this._http.post('http:///recieveAPI', json, {
                         headers: headers
                     }).map(function (res) { return res.json(); });
                 };
@@ -57,7 +57,7 @@ System.register(['@angular/http', 'rxjs/add/operator/map', '@angular/core'], fun
                     var headers = new http_2.Headers();
                     headers.append('Content-type', 'application/json');
                     headers.append('X-CSRF-TOKEN', this.getToken());
-                    return this._http.post('http://paul-webdev.com/getOrders', json, {
+                    return this._http.post('http:///getOrders', json, {
                         headers: headers
                     }).map(function (res) { return res.json(); });
                 };
@@ -66,7 +66,7 @@ System.register(['@angular/http', 'rxjs/add/operator/map', '@angular/core'], fun
                     var headers = new http_2.Headers();
                     headers.append('Content-type', 'application/json');
                     headers.append('X-CSRF-TOKEN', this.getToken());
-                    return this._http.post('http://paul-webdev.com/getOrdersClient', json, {
+                    return this._http.post('http:///getOrdersClient', json, {
                         headers: headers
                     }).map(function (res) { return res.json(); });
                 };
@@ -75,7 +75,7 @@ System.register(['@angular/http', 'rxjs/add/operator/map', '@angular/core'], fun
                     var headers = new http_2.Headers();
                     headers.append('Content-type', 'application/json');
                     headers.append('X-CSRF-TOKEN', this.getToken());
-                    return this._http.post('http://paul-webdev.com/getSpecificAddOns', json, {
+                    return this._http.post('http:///getSpecificAddOns', json, {
                         headers: headers
                     }).map(function (res) { return res.json(); });
                 };

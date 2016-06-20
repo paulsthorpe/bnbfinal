@@ -14,18 +14,18 @@ export class RequestService {
 
 
   getMenuItem(id) {
-    return this._http.get("http://paul-webdev.com/getItems/"+id)
+    return this._http.get("http:///getItems/"+id)
       .map(res => res.json());
   }
 
   getMenuItems() {
-    return this._http.get("http://paul-webdev.com/getItems")
+    return this._http.get("http:///getItems")
       .map(res => res.json());
   }
 
 
   getAddOns() {
-    return this._http.get("http://paul-webdev.com/getAddOns")
+    return this._http.get("http:///getAddOns")
       .map(res => res.json());
   }
 
@@ -44,7 +44,7 @@ export class RequestService {
 
     headers.append('X-CSRF-TOKEN', this.getToken());
 
-    return this._http.post('http://paul-webdev.com/recieveAPI', json , {
+    return this._http.post('http:///recieveAPI', json , {
       headers: headers
     }).map(res => res.json());
 
@@ -60,7 +60,7 @@ export class RequestService {
 
     headers.append('X-CSRF-TOKEN', this.getToken());
 
-    return this._http.post('http://paul-webdev.com/getOrders', json , {
+    return this._http.post('http:///getOrders', json , {
       headers: headers
     }).map(res => res.json());
 
@@ -76,7 +76,7 @@ export class RequestService {
 
     headers.append('X-CSRF-TOKEN', this.getToken());
 
-    return this._http.post('http://paul-webdev.com/getOrdersClient', json , {
+    return this._http.post('http:///getOrdersClient', json , {
       headers: headers
     }).map(res => res.json());
 
@@ -92,7 +92,7 @@ export class RequestService {
 
     headers.append('X-CSRF-TOKEN', this.getToken());
 
-    return this._http.post('http://paul-webdev.com/getSpecificAddOns', json , {
+    return this._http.post('http:///getSpecificAddOns', json , {
       headers: headers
     }).map(res => res.json());
 
