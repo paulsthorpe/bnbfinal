@@ -97,9 +97,6 @@ export class ReorderService {
 
       pastOrder['order_id'] = data[i].order_id;
       pastOrder['items'] = col;
-
-
-
       this.pastOrdersClient.push(pastOrder);
 
     }
@@ -130,7 +127,6 @@ export class ReorderService {
 
     }
 
-
     this.apiItem = {
       item_id: this.pastOrders[orderIndex].items[itemIndex].item_id,
       additionals: this.orderService.apiAdditionals
@@ -143,9 +139,6 @@ export class ReorderService {
       total: this.orderService.total,
     }
 
-
-
-
     this.orderService.addToOrder(this.apiItem);
     this.orderService.addToCart(this.cartItem);
     this.orderService.itemPrices.push(this.orderService.total);
@@ -153,7 +146,6 @@ export class ReorderService {
   }
 
 }
-
 
 export interface AddOn {
   id: number,
