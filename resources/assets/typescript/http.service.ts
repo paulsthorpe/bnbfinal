@@ -25,13 +25,19 @@ export class RequestService {
 
 
   getAddOns() {
+
     return this._http.get("http://paul-webdev.com/getAddOns")
+
       .map(res => res.json());
+      
   }
 
   getToken() {
+
   let token = document.querySelector('meta[property="csrf-token"]')['content'];
+
   return token;
+
   }
 
   postJSON(item) {
