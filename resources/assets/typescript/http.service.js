@@ -10,12 +10,13 @@ System.register(['@angular/http', 'rxjs/add/operator/map', '@angular/core'], fun
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var http_1, core_1;
+    var http_1, core_1, http_2;
     var RequestService;
     return {
         setters:[
             function (http_1_1) {
                 http_1 = http_1_1;
+                http_2 = http_1_1;
             },
             function (_1) {},
             function (core_1_1) {
@@ -26,6 +27,58 @@ System.register(['@angular/http', 'rxjs/add/operator/map', '@angular/core'], fun
                 function RequestService(_http) {
                     this._http = _http;
                 }
+                RequestService.prototype.getMenuItem = function (id) {
+                    return this._http.get("http://paul-webdev.com/getItems/" + id)
+                        .map(function (res) { return res.json(); });
+                };
+                RequestService.prototype.getMenuItems = function () {
+                    return this._http.get("http://paul-webdev.com/getItems")
+                        .map(function (res) { return res.json(); });
+                };
+                RequestService.prototype.getAddOns = function () {
+                    return this._http.get("http://paul-webdev.com/getAddOns")
+                        .map(function (res) { return res.json(); });
+                };
+                RequestService.prototype.getToken = function () {
+                    var token = document.querySelector('meta[property="csrf-token"]')['content'];
+                    return token;
+                };
+                RequestService.prototype.postJSON = function (item) {
+                    var json = JSON.stringify(item);
+                    var headers = new http_2.Headers();
+                    headers.append('Content-type', 'application/json');
+                    headers.append('X-CSRF-TOKEN', this.getToken());
+                    return this._http.post('http://paul-webdev.com/recieveAPI', json, {
+                        headers: headers
+                    }).map(function (res) { return res.json(); });
+                };
+                RequestService.prototype.getOrders = function (item) {
+                    var json = JSON.stringify(item);
+                    var headers = new http_2.Headers();
+                    headers.append('Content-type', 'application/json');
+                    headers.append('X-CSRF-TOKEN', this.getToken());
+                    return this._http.post('http://paul-webdev.com/getOrders', json, {
+                        headers: headers
+                    }).map(function (res) { return res.json(); });
+                };
+                RequestService.prototype.getOrdersClient = function (item) {
+                    var json = JSON.stringify(item);
+                    var headers = new http_2.Headers();
+                    headers.append('Content-type', 'application/json');
+                    headers.append('X-CSRF-TOKEN', this.getToken());
+                    return this._http.post('http://paul-webdev.com/getOrdersClient', json, {
+                        headers: headers
+                    }).map(function (res) { return res.json(); });
+                };
+                RequestService.prototype.getSpecificAddOns = function (item) {
+                    var json = JSON.stringify(item);
+                    var headers = new http_2.Headers();
+                    headers.append('Content-type', 'application/json');
+                    headers.append('X-CSRF-TOKEN', this.getToken());
+                    return this._http.post('http://paul-webdev.com/getSpecificAddOns', json, {
+                        headers: headers
+                    }).map(function (res) { return res.json(); });
+                };
                 RequestService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])
