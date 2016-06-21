@@ -50,6 +50,7 @@ export class WelcomeComponent implements OnInit{
   retrieveOrderState(orderIndex){
     this.reorderService.retrieveOrderState(orderIndex);
     // this.router.navigate(['Review']);
+    
   }
 
   applyOrder(data, orderIndex, itemIndex){

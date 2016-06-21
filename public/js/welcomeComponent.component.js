@@ -63,7 +63,7 @@ System.register(['@angular/core', './cart.component', './order.service', './reor
                 };
                 WelcomeComponent.prototype.retrieveOrderState = function (orderIndex) {
                     this.reorderService.retrieveOrderState(orderIndex);
-                    this.router.navigate(['Review']);
+                    // this.router.navigate(['Review']);
                 };
                 WelcomeComponent.prototype.applyOrder = function (data, orderIndex, itemIndex) {
                     this.reorderService.applyOrder(data, orderIndex, itemIndex);
