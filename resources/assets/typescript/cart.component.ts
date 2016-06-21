@@ -33,7 +33,7 @@ export class CartComponent {
 
     this.cart = this.orderService.cart;
 
-    if(this.cart.length>0){
+    if(this.cart.length > 0){
       //get all item prices and reduce for total
       this.totalPrice = this.orderService.itemPrices.reduce(function(total,num){return total+num});
       this.tax = this.orderService.calcTax(this.totalPrice);
