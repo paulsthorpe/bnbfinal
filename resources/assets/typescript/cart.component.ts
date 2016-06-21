@@ -65,12 +65,4 @@ export class CartComponent {
     this.subtotal = this.tax + this.totalPrice;
   }
 
-  isNumber(val){
-    return typeof val === 'number';
-  }
-
-  routeReview(){
-    this.router.navigate(['Review']);
-  }
-
 }
