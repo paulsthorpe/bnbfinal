@@ -62,6 +62,9 @@ System.register(['@angular/core', '@angular/http', '@angular/router-deprecated',
                     this.tax = this.orderService.calcTax(this.totalPrice);
                     this.subtotal = this.tax + this.totalPrice;
                 };
+                CartComponent.prototype.isNumber = function (val) {
+                    return typeof val === 'number';
+                };
                 CartComponent = __decorate([
                     core_1.Component({
                         selector: 'cart',
