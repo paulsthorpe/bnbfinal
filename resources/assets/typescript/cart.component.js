@@ -28,8 +28,9 @@ System.register(['@angular/core', '@angular/http', '@angular/router-deprecated',
             }],
         execute: function() {
             CartComponent = (function () {
-                function CartComponent(orderService) {
+                function CartComponent(orderService, router) {
                     this.orderService = orderService;
+                    this.router = router;
                 }
                 CartComponent.prototype.ngOnInit = function () {
                     this.cart = this.orderService.cart;
@@ -61,6 +62,12 @@ System.register(['@angular/core', '@angular/http', '@angular/router-deprecated',
                     this.tax = this.orderService.calcTax(this.totalPrice);
                     this.subtotal = this.tax + this.totalPrice;
                 };
+                CartComponent.prototype.isNumber = function (val) {
+                    return typeof val === 'number';
+                };
+                CartComponent.prototype.routeReview = function () {
+                    this.router.navigate(['Review']);
+                };
                 CartComponent = __decorate([
                     core_1.Component({
                         selector: 'cart',
@@ -69,7 +76,7 @@ System.register(['@angular/core', '@angular/http', '@angular/router-deprecated',
                         providers: [http_1.HTTP_PROVIDERS],
                         inputs: ['cart', 'totalPrice', 'tax', 'subtotal']
                     }), 
-                    __metadata('design:paramtypes', [order_service_1.OrderService])
+                    __metadata('design:paramtypes', [order_service_1.OrderService, router_deprecated_1.Router])
                 ], CartComponent);
                 return CartComponent;
             }());

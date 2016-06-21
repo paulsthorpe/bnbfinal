@@ -27,10 +27,14 @@
 
   <div class="cart-totals" *ngIf="cart.length>0">
 
+    <button *ngIf="isNumber(totalPrice)" class="btn btn-centerX checkout" (click)="routeReview()">
+      <span>Continue To Order<i class="fa fa-chevron-right"></i></span>
+    </button>
 
-    <span class="cart-total">Total: $ {{orderService.formatPrice(totalPrice)}}</span>
-    <span class="tax">Tax: $ {{orderService.formatPrice(tax)}}</span>
-    <span class="subtotal">Tax: $ {{orderService.formatPrice(subtotal)}}</span>
+    <span *ngIf="isNumber(totalPrice)" class="cart-total">Total: $ {{orderService.formatPrice(totalPrice)}}</span>
+    <span *ngIf="isNumber(totalPrice)" class="tax">Tax: $ {{orderService.formatPrice(tax)}}</span>
+    <span *ngIf="isNumber(totalPrice)" class="subtotal">Tax: $ {{orderService.formatPrice(subtotal)}}</span>
+
 
   </div>
 

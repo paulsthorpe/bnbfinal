@@ -1,7 +1,7 @@
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {Component, OnInit} from '@angular/core';
 import {HTTP_PROVIDERS} from '@angular/http';
-import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteParams} from '@angular/router-deprecated';
+import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteParams, Router} from '@angular/router-deprecated';
 import {OrderService} from './order.service';
 
 
@@ -26,7 +26,7 @@ export class CartComponent {
   cartItem: any;
   orderItem: any;
 
-  constructor(public orderService : OrderService){
+  constructor(public orderService : OrderService,private router : Router){
   }
 
   ngOnInit(){
@@ -63,6 +63,14 @@ export class CartComponent {
     this.totalPrice = this.orderService.itemPrices.reduce(function(total,num){return total+num});
     this.tax = this.orderService.calcTax(this.totalPrice);
     this.subtotal = this.tax + this.totalPrice;
+  }
+
+  isNumber(val){
+    return typeof val === 'number';
+  }
+
+  routeReview(){
+    this.router.navigate(['Review']);
   }
 
 }
