@@ -32,11 +32,13 @@ export class CartComponent {
   ngOnInit(){
 
     this.cart = this.orderService.cart;
-    
-    this.totalPrice = this.orderService.itemPrices.reduce(function(total,num){return total+num});
-    console.log(this.totalPrice);
-    this.tax = this.orderService.calcTax(this.totalPrice);
-    this.subtotal = this.tax + this.totalPrice;
+
+    if(this.cart.length>0){
+      //get all item prices and reduce for total
+      this.totalPrice = this.orderService.itemPrices.reduce(function(total,num){return total+num});
+      this.tax = this.orderService.calcTax(this.totalPrice);
+      this.subtotal = this.tax + this.totalPrice;
+    }
 
   }
 
