@@ -13,18 +13,16 @@ import {WelcomeComponent} from './welcomeComponent.component';
 import {ConfirmComponent} from './confirm.component';
 
 
-
-
 @RouteConfig([
-  {path: '/order', name: 'Welcome', component: WelcomeComponent },
-  {path: '/order/options/:type', name: 'Options', component: OptionsComponent },
-  {path: '/order/config/:item', name: 'Config', component: ConfigItemComponent },
-  {path: '/order/review', name: 'Review', component: ReviewComponent },
-  {path: '/order/confirmation', name: 'Confirm', component: ConfirmComponent },
-  {path: '/*other', name: 'Welcome', component: WelcomeComponent },
-  {path: '/order/options/*other', name: 'Welcome', component: WelcomeComponent },
-  {path: '/order/config/*other', name: 'Welcome', component: WelcomeComponent },
-  {path: '/order/*other', name: 'Welcome', component: WelcomeComponent },
+    {path: '/order', name: 'Welcome', component: WelcomeComponent},
+    {path: '/order/options/:type', name: 'Options', component: OptionsComponent},
+    {path: '/order/config/:item', name: 'Config', component: ConfigItemComponent},
+    {path: '/order/review', name: 'Review', component: ReviewComponent},
+    {path: '/order/confirmation', name: 'Confirm', component: ConfirmComponent},
+    {path: '/*other', name: 'Welcome', component: WelcomeComponent},
+    {path: '/order/options/*other', name: 'Welcome', component: WelcomeComponent},
+    {path: '/order/config/*other', name: 'Welcome', component: WelcomeComponent},
+    {path: '/order/*other', name: 'Welcome', component: WelcomeComponent},
 ])
 
 @Component({
@@ -34,9 +32,9 @@ import {ConfirmComponent} from './confirm.component';
     providers: [ROUTER_PROVIDERS, RequestService, HTTP_PROVIDERS, OrderService]
 })
 
-export class AppComponent{
+export class AppComponent {
 
-    constructor(private _httpService: RequestService){
+    constructor(private _httpService:RequestService) {
     }
 
-  }
+}

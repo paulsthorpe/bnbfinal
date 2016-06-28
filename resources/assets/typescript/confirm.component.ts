@@ -3,10 +3,9 @@ import {Component} from '@angular/core';
 import {CartComponent} from './cart.component';
 import {OrderService} from './order.service';
 
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
 
 import {HTTP_PROVIDERS} from '@angular/http';
-
 
 
 @Component({
@@ -17,19 +16,19 @@ import {HTTP_PROVIDERS} from '@angular/http';
     inputs: ['cust']
 })
 
-export class ConfirmComponent{
+export class ConfirmComponent {
 
-    cust : any;
-    time : any;
+    cust:any;
+    time:any;
 
-    constructor(public orderService : OrderService){
-      this.cust = this.orderService.customer;
+    constructor(public orderService:OrderService) {
+        this.cust = this.orderService.customer;
     }
 
 
-  }
+}
 
-  export interface CustInfo {
-    name: string,
-    phone: string
-  }
+export interface CustInfo {
+    name:string,
+    phone:string
+}

@@ -37,10 +37,12 @@ System.register(['rxjs/add/operator/map', '@angular/core'], function(exports_1, 
                 }
                 OrderService.prototype.addToOrder = function (item) {
                     this.order.push(item);
+                    //clear previous array to avoid duplication
                     this.apiAdditionals = [];
                 };
                 OrderService.prototype.addToCart = function (item) {
                     this.cart.push(item);
+                    //clear previous arrays to avoid duplication
                     this.cartPrices = [];
                     this.cartAdditionals = [];
                 };

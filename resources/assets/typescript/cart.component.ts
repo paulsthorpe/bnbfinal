@@ -5,7 +5,6 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, RouteParams, Router} f
 import {OrderService} from './order.service';
 
 
-
 @Component({
     selector: 'cart',
     templateUrl: './components/cart.component.html',
@@ -15,59 +14,65 @@ import {OrderService} from './order.service';
 })
 
 export class CartComponent {
-  //array containing user relevant cart info
-  cart: any;
+    //array containing user relevant cart info
+    cart:any;
 
-  totalPrice: number;
-  tax: number;
-  subtotal: number;
+    totalPrice:number;
+    tax:number;
+    subtotal:number;
 
-  //temporary storage for item objects for deleting/adding purposes in functions below
-  cartItem: any;
-  orderItem: any;
+    //temporary storage for item objects for deleting/adding purposes in functions below
+    cartItem:any;
+    orderItem:any;
 
-  constructor(public orderService : OrderService,private router : Router){
-  }
-
-  ngOnInit(){
-
-    this.cart = this.orderService.cart;
-
-    if(this.cart.length > 0){
-      //get all item prices and reduce for total
-      this.totalPrice = this.orderService.itemPrices.reduce(function(total,num){return total+num});
-      this.tax = this.orderService.calcTax(this.totalPrice);
-      this.subtotal = this.tax + this.totalPrice;
+    constructor(public orderService:OrderService, private router:Router) {
     }
 
-  }
+    ngOnInit() {
 
-  deleteItem(item){
-    //delete objects related to user input
-    this.orderService.cart.splice(item,1);
-    this.orderService.order.splice(item,1);
-    this.orderService.itemPrices.splice(item,1);
-    this.totalPrice = this.orderService.itemPrices.reduce(function(total,num){return total+num});
-    this.tax = this.orderService.calcTax(this.totalPrice);
-    this.subtotal = this.tax + this.totalPrice;
-  }
+        this.cart = this.orderService.cart;
 
-  addItem(item){
-    //grab and store objects concerning user input
-    this.cartItem = this.orderService.cart[item];
-    this.orderItem = this.orderService.order[item];
-    //create duplicate instances of objects and add to api/cart arrays
-    this.orderService.cart.push(this.cartItem);
-    this.orderService.order.push(this.orderItem);
-    this.orderService.itemPrices.push(this.cartItem.total);
-    this.totalPrice = this.orderService.itemPrices.reduce(function(total,num){return total+num});
-    this.tax = this.orderService.calcTax(this.totalPrice);
-    this.subtotal = this.tax + this.totalPrice;
-  }
+        if (this.cart.length > 0) {
+            //get all item prices and reduce for total
+            this.totalPrice = this.orderService.itemPrices.reduce(function (total, num) {
+                return total + num
+            });
+            this.tax = this.orderService.calcTax(this.totalPrice);
+            this.subtotal = this.tax + this.totalPrice;
+        }
 
-  isNumber(val){
-    return typeof val === 'number';
-  }
+    }
+
+    deleteItem(item) {
+        //delete objects related to user input
+        this.orderService.cart.splice(item, 1);
+        this.orderService.order.splice(item, 1);
+        this.orderService.itemPrices.splice(item, 1);
+        this.totalPrice = this.orderService.itemPrices.reduce(function (total, num) {
+            return total + num
+        });
+        this.tax = this.orderService.calcTax(this.totalPrice);
+        this.subtotal = this.tax + this.totalPrice;
+    }
+
+    addItem(item) {
+        //grab and store objects concerning user input
+        this.cartItem = this.orderService.cart[item];
+        this.orderItem = this.orderService.order[item];
+        //create duplicate instances of objects and add to api/cart arrays
+        this.orderService.cart.push(this.cartItem);
+        this.orderService.order.push(this.orderItem);
+        this.orderService.itemPrices.push(this.cartItem.total);
+        this.totalPrice = this.orderService.itemPrices.reduce(function (total, num) {
+            return total + num
+        });
+        this.tax = this.orderService.calcTax(this.totalPrice);
+        this.subtotal = this.tax + this.totalPrice;
+    }
+
+    isNumber(val) {
+        return typeof val === 'number';
+    }
 
 
 }

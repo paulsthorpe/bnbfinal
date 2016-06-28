@@ -85,7 +85,9 @@ System.register(['rxjs/add/operator/map', '@angular/core'], function(exports_1, 
                 };
                 OrderService.prototype.create = function (id, price, item) {
                     this.cartPrices.push(price);
-                    this.total = this.cartPrices.reduce(function (total, num) { return total + num; });
+                    this.total = this.cartPrices.reduce(function (total, num) {
+                        return total + num;
+                    });
                     // !!!!!!!!!!!!!!!!!!!FOR API!!!!!!!!!!!!!!!!!!!!!!!//
                     //set interface with selected menuitem and addons
                     this.apiItem = {

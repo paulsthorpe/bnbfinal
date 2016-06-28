@@ -36,7 +36,9 @@ System.register(['@angular/core', '@angular/http', '@angular/router-deprecated',
                     this.cart = this.orderService.cart;
                     if (this.cart.length > 0) {
                         //get all item prices and reduce for total
-                        this.totalPrice = this.orderService.itemPrices.reduce(function (total, num) { return total + num; });
+                        this.totalPrice = this.orderService.itemPrices.reduce(function (total, num) {
+                            return total + num;
+                        });
                         this.tax = this.orderService.calcTax(this.totalPrice);
                         this.subtotal = this.tax + this.totalPrice;
                     }
@@ -46,7 +48,9 @@ System.register(['@angular/core', '@angular/http', '@angular/router-deprecated',
                     this.orderService.cart.splice(item, 1);
                     this.orderService.order.splice(item, 1);
                     this.orderService.itemPrices.splice(item, 1);
-                    this.totalPrice = this.orderService.itemPrices.reduce(function (total, num) { return total + num; });
+                    this.totalPrice = this.orderService.itemPrices.reduce(function (total, num) {
+                        return total + num;
+                    });
                     this.tax = this.orderService.calcTax(this.totalPrice);
                     this.subtotal = this.tax + this.totalPrice;
                 };
@@ -58,7 +62,9 @@ System.register(['@angular/core', '@angular/http', '@angular/router-deprecated',
                     this.orderService.cart.push(this.cartItem);
                     this.orderService.order.push(this.orderItem);
                     this.orderService.itemPrices.push(this.cartItem.total);
-                    this.totalPrice = this.orderService.itemPrices.reduce(function (total, num) { return total + num; });
+                    this.totalPrice = this.orderService.itemPrices.reduce(function (total, num) {
+                        return total + num;
+                    });
                     this.tax = this.orderService.calcTax(this.totalPrice);
                     this.subtotal = this.tax + this.totalPrice;
                 };
