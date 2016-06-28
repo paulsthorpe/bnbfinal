@@ -34,17 +34,4 @@
 
   </div>
 
-  <div *ngIf="reorderService.pastOrdersClient">
-      <div *ngFor="let order of reorderService.pastOrdersClient; let i = index">
-        <div class="past-order">
-          <p (click)="retrieveOrderState(i)">Order Id: {{order.order_id}}</p>
-          <div *ngFor="let item of order.items">
-              <h3>Item: {{item.name}}</h3>
-              <span *ngFor="let topping of item.additionals">{{topping + " / "}}</span>
-              <br>
-          </div>
-        </div>
-      </div>
-  </div>
-
 </div>
