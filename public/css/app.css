@@ -372,7 +372,7 @@ Orange color: #e67e22
         font-weight: lighter;
         margin-bottom: 20px; }
         .order-wrapper .welcome-component .welcome .form-group .input-container .box-up-input {
-          width: 100%;
+          width: 70%;
           height: 2em;
           background: none;
           border: none;
@@ -389,7 +389,7 @@ Orange color: #e67e22
           outline: none;
           background-color: none; }
         .order-wrapper .welcome-component .welcome .form-group .input-container .box-up-label {
-          width: 100%;
+          width: 70%;
           height: 2em;
           display: block;
           position: relative;
@@ -430,11 +430,11 @@ Orange color: #e67e22
         .order-wrapper .welcome-component .welcome .review:hover,
         .order-wrapper .welcome-component .welcome .review:active {
           color: #fff; }
-        .order-wrapper .welcome-component .welcome .past-order {
-          border: 1px solid #fff;
-          text-align: center;
-          margin: 15px 0;
-          cursor: pointer; }
+      .order-wrapper .welcome-component .past-order {
+        border: 1px solid #fff;
+        text-align: center;
+        margin: 15px 0;
+        cursor: pointer; }
     .order-wrapper .selector-wrapper {
       width: 100%; }
       .order-wrapper .selector-wrapper .selector-header {

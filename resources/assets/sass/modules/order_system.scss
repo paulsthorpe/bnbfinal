@@ -164,7 +164,7 @@ $fonts: 'Lato', Helvetica, sans-serif;
         font-weight: lighter;
         margin-bottom: 20px;
         .form-group .input-container .box-up-input {
-          width: 100%;
+          width: 70%;
           height: 2em;
           background: none;
           border: none;
@@ -186,7 +186,7 @@ $fonts: 'Lato', Helvetica, sans-serif;
           background-color: none;
         }
         .form-group .input-container .box-up-label {
-          width: 100%;
+          width: 70%;
           height: 2em;
           display: block;
           position: relative;
@@ -199,7 +199,6 @@ $fonts: 'Lato', Helvetica, sans-serif;
           padding-left: 5px;
           color: $white;
         }
-
         .form-group .input-container .box-up-label::before {
           content: '';
           position: absolute;
@@ -234,12 +233,10 @@ $fonts: 'Lato', Helvetica, sans-serif;
           background-color: $red;
           color: $white;
         }
-
         .review:hover,
         .review:active {
           color: $white;
         }
-
       }//welcome
 
       .past-order {
@@ -248,7 +245,7 @@ $fonts: 'Lato', Helvetica, sans-serif;
         margin: 15px 0;
         cursor: pointer;
       }
-      
+
     } //welcome-component
 
     .selector-wrapper {
