@@ -982,7 +982,8 @@ $fonts: 'Lato', Helvetica, sans-serif;
 }
 .order-body {
   background-color: red;
-  @include background-image("../images/fries.jpg");
+  // @include background-image("../images/fries.jpg");
+
   .loader {
     position: absolute;
     top: 42%;
