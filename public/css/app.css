@@ -954,7 +954,11 @@ Orange color: #e67e22
         color: #fff; } }
 
 .order-body {
-  background-color: red; }
+  background-color: red;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url("../images/fries.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; }
   .order-body .loader {
     position: absolute;
     top: 45%;
