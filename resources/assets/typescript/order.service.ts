@@ -44,10 +44,13 @@ export class OrderService {
 
   addToOrder(item){
     this.order.push(item);
+    this.apiAdditionals = [];
   }
 
   addToCart(item){
     this.cart.push(item);
+    this.cartPrices = [];
+    this.cartAdditionals = [];
   }
 
   formatPrice(input){
