@@ -980,14 +980,13 @@ $fonts: 'Lato', Helvetica, sans-serif;
   } //order wrapper
 
 }
-
 .order-body {
   background-color: red;
   @include background-image("../images/fries.jpg");
   .loader {
     position: absolute;
     top: 42%;
-    left: 40%;
+    width: 100%;
     text-align: center;
     .fa-spinner{
       font-size: 6em;

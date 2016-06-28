@@ -962,7 +962,7 @@ Orange color: #e67e22
   .order-body .loader {
     position: absolute;
     top: 42%;
-    left: 40%;
+    width: 100%;
     text-align: center; }
     .order-body .loader .fa-spinner {
       font-size: 6em;
