@@ -110,6 +110,9 @@ export class ReorderService {
         this._httpService.getSpecificAddOns(this.pastOrders[orderIndex].items[itemIndex].additionals)
         .subscribe(data => this.applyOrder(data, orderIndex, index));
     }
+
+    //clear past orders to reduce clutter
+    this.pastOrders = [];
   }
 
   applyOrder(data, orderIndex, itemIndex){
