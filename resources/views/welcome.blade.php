@@ -68,17 +68,17 @@
             <ul class="showcase clearfix">
                 <li>
                     <figure class="meal-photo">
-                        <img src="/images/Best%20N%20Burgers-1-5.jpg" alt="Best-n-burgers customers">
+                        <img src="/images/Best-N-Burgers-1-5.jpg" alt="Best-n-burgers customers">
                     </figure>
                 </li>
                 <li>
                     <figure class="meal-photo">
-                        <img src="/images/Best%20N%20Burgers-1-11.jpg" alt="Cheeseburger and fries">
+                        <img src="/images/Best-N-Burgers-1-11.jpg" alt="Cheeseburger and fries">
                     </figure>
                 </li>
                 <li>
                     <figure class="meal-photo">
-                        <img src="/images/Best%20N%20Burgers-1-7.jpg" alt="Best-n-burgers customers">
+                        <img src="/images/Best-N-Burgers-1-7.jpg" alt="Best-n-burgers customers">
                     </figure>
                 </li>
                 <li>
@@ -95,17 +95,17 @@
                 </li>
                 <li>
                     <figure class="meal-photo">
-                      <img src="/images/Best%20N%20Burgers-1-4.jpg" alt="Best-n-burgers customers">
+                      <img src="/images/Best-N-Burgers-1-4.jpg" alt="Best-n-burgers customers">
                     </figure>
                 </li>
                 <li>
                     <figure class="meal-photo">
-                        <img src="/images/Best%20N%20Burgers-1-10.jpg" alt="Cheese Burger and fries">
+                        <img src="/images/Best-N-Burgers-1-10.jpg" alt="Cheese Burger and fries">
                     </figure>
                 </li>
                 <li>
                     <figure class="meal-photo">
-                      <img src="/images/Best%20N%20Burgers-1-19.jpg" alt="orangeade">
+                      <img src="/images/Best-N-Burgers-1-19.jpg" alt="orangeade">
                     </figure>
                 </li>
             </ul>
@@ -486,7 +486,7 @@ transform: scale(1.03);
 /* TESTIMONIALS */
 /* ----------------------------------------------- */
 /*.parallax {
-background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/images/Best%20N%20Burgers-1-10.jpg");
+background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/images/Best-N-Burgers-1-10.jpg");
 background-repeat: no-repeat;
 background-position: center center;
 -webkit-background-size: cover;

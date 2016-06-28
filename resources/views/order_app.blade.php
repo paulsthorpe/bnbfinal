@@ -3,7 +3,7 @@
     <head>
         <title>Order Best-N-Burgers!</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,400" rel="stylesheet" type="text/css">
         <!-- <link rel="stylesheet" href="/css/util_styles.css"> -->
         <!-- <script src="js/util_scripts.js" type="text/javascript"></script> -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -22,24 +22,56 @@
         {{ Html::script('angular2/bundles/router.dev.js') }}
         {{ Html::script('angular2/bundles/http.dev.js') }}
 
-    <script>
-    System.config({
-            "defaultJSExtensions": true,
-            packages: {
-                app: {
-                    format: 'register',
-                    defaultExtension: 'js'
-                }
-            }
-        });
-    System.import('js/boot')
-                .then(null, console.error.bind(console));
-    </script>
+
 
     </head>
     <body>
 
-      <order-app>Loading...</order-app>
+      <order-app>
+        <div class="loader">
+          <i class="fa fa-spinner fa-pulse"></i>
+          <p class="loading">
+            Loading...
+          </p>
+        </div>
+
+      </order-app>
 
     </body>
+    <style media="screen">
+      body {
+        background-color: red;
+      }
+      .loader {
+        position: absolute;
+        top: 45%;
+        left: 45%;
+        text-align: center;
+      }
+      .fa-spinner{
+        font-size: 6em;
+        margin-bottom: 30px;
+        color: white;
+      }
+      .loading {
+        font-family: 'Lato', sans-serif;
+        font-size: 2em;
+        color: white;
+      }
+
+
+    </style>
 </html>
+<script>
+System.config({
+    "defaultJSExtensions": true,
+    packages: {
+        app: {
+            format: 'register',
+            defaultExtension: 'js'
+        }
+    }
+});
+System.import('js/boot')
+            .then(null, console.error.bind(console));
+</script>

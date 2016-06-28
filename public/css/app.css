@@ -130,7 +130,8 @@ Orange color: #e67e22
           align-items: center;
           -ms-flex-pack: center;
           justify-content: center;
-          position: relative; }
+          position: relative;
+          overflow: hidden; }
           .homepage header nav .nav-items li a::before {
             content: "";
             position: absolute;
@@ -161,23 +162,25 @@ Orange color: #e67e22
     width: 70%;
     margin-left: 15%; }
   .homepage .pic-gallery .showcase {
-    list-style: none;
-    width: 100%; }
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    position: relative; }
     .homepage .pic-gallery .showcase li {
-      float: left;
-      width: 25%;
-      overflow: hidden; }
+      -ms-flex: 1;
+      flex: 1;
+      overflow: hidden;
+      height: 130%; }
       .homepage .pic-gallery .showcase li .meal-photo {
-        width: 100%;
+        width: auto;
+        height: 120%;
         overflow: hidden;
         background-color: #000; }
-        .homepage .pic-gallery .showcase li .meal-photo:nth-child(5) {
-          height: 102%;
-          transform: translateY(15px); }
         .homepage .pic-gallery .showcase li .meal-photo img {
           opacity: 0.7;
           width: 100%;
-          height: auto;
+          height: 140%;
           transform: scale(1.15);
           transition: transform 0.5s, opacity 0.5s; }
           .homepage .pic-gallery .showcase li .meal-photo img:hover {
