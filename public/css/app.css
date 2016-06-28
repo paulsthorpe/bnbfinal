@@ -5,216 +5,310 @@ Orange color: #e67e22
 /* ----------------------------------------------- */
 /* BASIC SETUP */
 /* --------------------------------------------- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; }
-
-.homepage {
-  font-size: 1.2em;
-  font-family: "Lato", sans-serif; }
-  .homepage a, .homepage a:visited,
-  .homepage a:hover, .homepage a:active {
-    text-decoration: none;
-    color: #fff; }
-  .homepage .btn {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    position: relative;
-    margin: 10% auto 0;
-    width: 30%;
-    height: 75px;
-    border: 2px solid #fff;
-    border-radius: 25px;
-    background: none;
-    color: #fff;
-    letter-spacing: 3px;
-    font-size: 1.3em;
-    transition: all 0.3s;
-    overflow: hidden;
-    z-index: 30; }
-    .homepage .btn p {
+@media screen and (max-device-width: 3000px) {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; }
+  .homepage {
+    font-size: 1.2em;
+    font-family: "Lato", sans-serif; }
+    .homepage a, .homepage a:visited,
+    .homepage a:hover, .homepage a:active {
+      text-decoration: none;
+      color: #fff; }
+    .homepage .btn {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      align-items: center;
+      -ms-flex-pack: center;
+      justify-content: center;
       position: relative;
-      z-index: 35;
-      margin: 10px; }
-  .homepage .btn:after {
-    content: '';
-    position: absolute;
-    z-index: 0;
-    width: 0%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: #fff;
-    transition: all 0.3s; }
-  .homepage .btn:hover,
-  .homepage .btn:active {
-    color: red;
-    border: 2px solid red; }
-  .homepage .btn:hover::after,
-  .homepage .btn:active::after {
-    width: 104%; }
-  .homepage h1,
-  .homepage h2,
-  .homepage h3 {
-    font-weight: 300;
-    text-transform: uppercase; }
-  .homepage h1 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    color: #fff;
-    font-size: 240%;
-    word-spacing: 4px;
-    letter-spacing: 1px; }
-  .homepage h2 {
-    font-size: 180%;
-    word-spacing: 2px;
-    text-align: center;
-    margin: 30px 0;
-    letter-spacing: 1px; }
-  .homepage h3 {
-    font-size: 110%;
-    margin-bottom: 15px; }
-  .homepage h2:after {
-    display: block;
-    height: 2px;
-    background-color: red;
-    content: " ";
-    width: 100px;
-    margin: 0 auto;
-    margin-top: 30px; }
-  .homepage .clearfix:after {
-    content: '.';
-    clear: both;
-    display: block;
-    height: 0;
-    visibility: hidden; }
-  .homepage header {
-    height: 100vh;
-    width: 100vw;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url("/images/bg.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover; }
-    .homepage header nav {
+      margin: 10% auto 0;
+      width: 30%;
+      height: 75px;
+      border: 2px solid #fff;
+      border-radius: 25px;
+      background: none;
+      color: #fff;
+      letter-spacing: 3px;
+      font-size: 1.3em;
+      transition: all 0.3s;
+      overflow: hidden;
+      z-index: 30; }
+      .homepage .btn p {
+        position: relative;
+        z-index: 35;
+        margin: 10px; }
+    .homepage .btn:after {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      width: 0%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: #fff;
+      transition: all 0.3s; }
+    .homepage .btn:hover,
+    .homepage .btn:active {
+      color: red;
+      border: 2px solid red; }
+    .homepage .btn:hover::after,
+    .homepage .btn:active::after {
+      width: 104%; }
+    .homepage h1,
+    .homepage h2,
+    .homepage h3 {
+      font-weight: 300;
+      text-transform: uppercase; }
+    .homepage h1 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #fff;
+      font-size: 240%;
+      word-spacing: 4px;
+      letter-spacing: 1px; }
+    .homepage h2 {
+      font-size: 180%;
+      word-spacing: 2px;
+      text-align: center;
+      margin: 30px 0;
+      letter-spacing: 1px; }
+    .homepage h3 {
+      font-size: 110%;
+      margin-bottom: 15px; }
+    .homepage h2:after {
+      display: block;
+      height: 2px;
+      background-color: red;
+      content: " ";
+      width: 100px;
+      margin: 0 auto;
+      margin-top: 30px; }
+    .homepage .clearfix:after {
+      content: '.';
+      clear: both;
+      display: block;
+      height: 0;
+      visibility: hidden; }
+    .homepage header {
+      height: 100vh;
       width: 100vw;
-      display: block; }
-      .homepage header nav .logo {
-        position: relative;
-        display: inline;
-        position: relative;
-        top: 0;
-        left: 0;
-        height: 100px;
-        margin: 30px 0 0 20%; }
-      .homepage header nav .nav-items {
-        position: absolute;
-        top: 0;
-        right: 0;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        width: 60%;
-        height: 100px;
-        padding: 0 15% 0 5%;
-        margin-top: 35px; }
-        .homepage header nav .nav-items li {
-          -ms-flex: 1;
-          flex: 1;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url("/images/bg.jpg");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover; }
+      .homepage header nav {
+        width: 100vw;
+        display: block; }
+        .homepage header nav .drop-button {
+          display: none;
           display: -ms-flexbox;
           display: flex;
-          -ms-flex-align: center;
-          align-items: center;
-          -ms-flex-pack: center;
-          justify-content: center;
+          text-align: center;
+          font-size: 3.6em; }
+          .homepage header nav .drop-button i {
+            color: white; }
+        .homepage header nav .logo {
           position: relative;
-          overflow: hidden; }
-          .homepage header nav .nav-items li a::before {
-            content: "";
-            position: absolute;
-            width: 60%;
-            height: 3px;
-            background-color: red;
-            top: -5px;
-            left: 0;
-            transform: translate(30px, 70px);
-            transition: all 0.3s; }
-          .homepage header nav .nav-items li a::after {
-            content: "";
-            position: absolute;
-            width: 60%;
-            height: 3px;
-            background-color: red;
-            transform: translate(30px, -37px);
-            bottom: -5px;
-            left: 0; }
-          .homepage header nav .nav-items li a:hover::before {
-            transform: translate(30px, 35px); }
-    .homepage header .order-now {
-      margin-top: 15%; }
-      .homepage header .order-now h1 {
-        text-align: center; }
-  .homepage .story p {
-    line-height: 145%;
-    width: 70%;
-    margin-left: 15%; }
-  .homepage .pic-gallery .showcase {
-    display: -ms-flexbox;
-    display: flex;
-    width: 100%;
-    overflow: hidden;
-    position: relative; }
-    .homepage .pic-gallery .showcase li {
-      -ms-flex: 1;
-      flex: 1;
-      overflow: hidden;
-      height: 130%; }
-      .homepage .pic-gallery .showcase li .meal-photo {
-        width: auto;
-        height: 120%;
-        overflow: hidden;
-        background-color: #000; }
-        .homepage .pic-gallery .showcase li .meal-photo img {
-          opacity: 0.7;
-          width: 100%;
-          height: 140%;
-          transform: scale(1.15);
-          transition: transform 0.5s, opacity 0.5s; }
-          .homepage .pic-gallery .showcase li .meal-photo img:hover {
-            opacity: 1;
-            transform: scale(1.03); }
-  .homepage .find_us {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/images/fries.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    width: 100vw;
-    background-attachment: fixed;
-    text-align: center;
-    padding: 50px 0; }
-  .homepage .find_us * {
-    color: #fff; }
-  .homepage .find_us #map {
-    padding: 0 50px;
-    max-width: 100%; }
-  .homepage footer {
-    width: 100%;
-    background-color: red; }
-    .homepage footer h1 {
-      padding-top: 20px;
+          display: inline;
+          position: relative;
+          top: 0;
+          left: 0;
+          height: 100px;
+          margin: 30px 0 0 20%; }
+        .homepage header nav .nav-items {
+          position: absolute;
+          top: 0;
+          right: 0;
+          display: -ms-inline-flexbox;
+          display: inline-flex;
+          width: 65%;
+          height: 100px;
+          padding: 0 15% 0 5%;
+          margin-top: 35px; }
+          .homepage header nav .nav-items li {
+            -ms-flex: 1;
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-line-pack: baseline;
+            align-content: baseline;
+            -ms-flex-pack: center;
+            justify-content: center; }
+            .homepage header nav .nav-items li::before {
+              content: "";
+              position: absolute;
+              width: 80%;
+              height: 3px;
+              background-color: red;
+              top: -5px;
+              left: 0;
+              right: 0;
+              opacity: 0;
+              transition: all 0.3s; }
+            .homepage header nav .nav-items li:hover::before {
+              transform: translateY(77px);
+              opacity: 1; }
+            .homepage header nav .nav-items li a {
+              transform: translateY(35px); }
+      .homepage header .order-now {
+        margin-top: 15%; }
+        .homepage header .order-now h1 {
+          text-align: center; }
+    .homepage .story p {
+      line-height: 145%;
+      width: 70%;
+      margin-left: 15%; }
+    .homepage .pic-gallery .showcase {
+      display: -ms-flexbox;
+      display: flex;
       width: 100%;
-      text-align: center; }
-    .homepage footer .social-links {
-      margin-bottom: 50px; }
-    .homepage footer .col-lg-12 {
+      overflow: hidden;
+      position: relative; }
+      .homepage .pic-gallery .showcase li {
+        -ms-flex: 1;
+        flex: 1;
+        overflow: hidden;
+        height: 130%; }
+        .homepage .pic-gallery .showcase li .meal-photo {
+          width: auto;
+          height: 120%;
+          overflow: hidden;
+          background-color: #000; }
+          .homepage .pic-gallery .showcase li .meal-photo img {
+            opacity: 0.7;
+            width: 100%;
+            height: 140%;
+            transform: scale(1.15);
+            transition: transform 0.5s, opacity 0.5s; }
+            .homepage .pic-gallery .showcase li .meal-photo img:hover {
+              opacity: 1;
+              transform: scale(1.03); }
+    .homepage .find_us {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/images/fries.jpg");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      width: 100vw;
+      background-attachment: fixed;
       text-align: center;
-      color: #fff;
-      padding: 10px; }
-      .homepage footer .col-lg-12:nth-child(2) {
-        font-size: .6em; }
+      padding: 50px 0; }
+    .homepage .find_us * {
+      color: #fff; }
+    .homepage .find_us #map {
+      padding: 0 50px;
+      max-width: 100%; }
+    .homepage footer {
+      width: 100%;
+      background-color: red; }
+      .homepage footer h1 {
+        padding-top: 20px;
+        width: 100%;
+        text-align: center; }
+      .homepage footer .social-links {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 50px; }
+        .homepage footer .social-links li {
+          display: inline-block;
+          padding: 0 20px; }
+      .homepage footer .col-lg-12 {
+        text-align: center;
+        color: #fff;
+        padding: 10px; }
+        .homepage footer .col-lg-12:nth-child(2) {
+          font-size: .6em; } }
+
+@media only screen and (min-device-width: 767px) and (max-device-width: 1199px) {
+  .homepage header nav .drop-button {
+    display: inline-block;
+    height: 70px;
+    width: 75px;
+    position: absolute;
+    right: 50px;
+    top: 40px;
+    background-color: red; }
+  .homepage header nav .nav-items {
+    display: block;
+    position: absolute;
+    width: 40%;
+    top: 110px;
+    margin: 0;
+    padding: 0;
+    right: 50px;
+    text-align: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.2s; }
+    .homepage header nav .nav-items.show {
+      max-height: 1500px;
+      height: 240px; }
+    .homepage header nav .nav-items li {
+      display: block;
+      width: 100%;
+      height: 60px;
+      border: 1px solid white;
+      padding: 15px 0;
+      background-color: #fff;
+      opacity: 0.5; }
+      .homepage header nav .nav-items li::before {
+        display: none; }
+      .homepage header nav .nav-items li a {
+        color: red; }
+  .homepage header .order-now {
+    margin-top: 30%; }
+    .homepage header .order-now a button {
+      width: 80%; } }
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 766px) and (-webkit-min-device-pixel-ratio: 2) {
+  .homepage header nav .drop-button {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    right: 50px;
+    top: 40px;
+    background-color: red; }
+  .homepage header nav .nav-items {
+    position: absolute;
+    width: 40%;
+    right: 50px;
+    text-align: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.2s; }
+    .homepage header nav .nav-items.show {
+      max-height: 1500px;
+      height: 240px; }
+    .homepage header nav .nav-items li {
+      display: block;
+      width: 100%;
+      height: 60px;
+      border: 1px solid white;
+      padding: 15px 0;
+      background-color: #fff;
+      opacity: 0.5; }
+      .homepage header nav .nav-items li::before {
+        display: none; }
+      .homepage header nav .nav-items li a {
+        color: red; }
+  .homepage header .order-now {
+    margin-top: 40%; }
+    .homepage header .order-now a button {
+      width: 80%; }
+  .homepage .menu .row img {
+    display: none; }
+  .homepage .pic-gallery {
+    display: none; }
+  .homepage footer {
+    width: 100vw; }
+    .homepage footer .credits {
+      padding: 0;
+      width: 100vw; } }
 
 .user_path_container {
   overflow: hidden;

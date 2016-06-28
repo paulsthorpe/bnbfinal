@@ -2,10 +2,10 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="/css/util_styles.css" charset="utf-8">
-
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/css/app.css" charset="utf-8">
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
         <title>Best-N-Burgers</title>
     </head>
@@ -13,12 +13,14 @@
         <header>
             <nav>
                     <img src="/images/logo.png" alt="Bnb logo" class="logo">
+                    <div class="drop-button">
+                      <i class="fa fa-bars"></i>
+                    </div>
                     <ul class="nav-items">
                         <li><a href="#splash">Home</a></li>
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#menu">Menu</a></li>
                         <li><a href="/order">Order Online</a></li>
-                        <li><a href="/store_login">Admin</a></li>
                     </ul>
             </nav>
             <div class="order-now">
@@ -50,14 +52,14 @@
 
         </section> -->
 
-        <section class="section-steps" id="menu">
+        <section class="menu" id="menu">
             <div class="row">
                 <h2>Our Menu</h2>
             </div>
             <div class="row">
-                <div class="col span-1-of-2 steps-box">
+
                     <img src="/images/menu.JPG" alt="Best-N-Burgers Menu" class="app-screen js--wp-2">
-                </div>
+
 
             </div>
         </section>
@@ -133,11 +135,11 @@
 
         <footer>
 
-                <div class="col-lg-6 col-lg-offset-3">
+                <div class="col-lg-6 col-lg-offset-3 col-sm-12">
                     <h1 class="row">Find Us On Social Media</h1>
                     <ul class="social-links row">
-                        <li class="col-lg-1 col-lg-offset-5"><a href="https://www.facebook.com/Best-N-Burgers-602533856468836/"><i class="fa fa-facebook-square"></i></a></li>
-                        <li class="col-lg-1"><a href="https://www.instagram.com/bestnburgers/"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://www.facebook.com/Best-N-Burgers-602533856468836/"><i class="fa fa-facebook-square"></i></a></li>
+                        <li><a href="https://www.instagram.com/bestnburgers/"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
 
@@ -152,9 +154,7 @@
             </div>
         </footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-    <script src="resources/js/scripts.js"></script>
+    <script src="/js/scripts.js"></script>
 
     </body>
 
