@@ -474,53 +474,66 @@ Orange color: #e67e22
 @include smallPhone {
 
   .homepage {
-
+    * {
+      overflow: hidden;
+    }
     header {
 
       nav {
         .drop-button {
 
-          height: 30px;
-          width: 30px;
+          height: 50px;
+          width: 50px;
           position: absolute;
-          right: 50px;
-          top: 40px;
+          right: 30px;
+          top: 50px;
           background-color: red;
+          display: flex;
+          i {
+            font-size: .7em;
+            flex: 1;
+          }
         }
         .logo {
-
+          width: 60%;
+          position: absolute;
+          top: 0;
+          left: -50px;
         } //logo
 
         .nav-items{
           position: absolute;
-          width: 40%;
-          right: 50px;
+          width: 80%;
+          right: -26px;
+          top: 65px;
           text-align: center;
           max-height: 0;
           overflow: hidden;
+
           transition: all 0.2s;
-          &.show {
-            max-height: 1500px;
-            height: 240px;
-          }
-          li {
-            display: block;
-            width: 100%;
-            height: 60px;
-            border: 1px solid white;
-            padding: 15px 0;
-            background-color: #fff;
-            opacity: 0.5;
-
-            &::before {
-              display: none;
+            &.show {
+              max-height: 1500px;
+              height: 240px;
             }
+            li {
+              display: block;
+              width: 100%;
+              height: 60px;
+              border: 1px solid white;
+              padding: 15px 0;
+              background-color: #fff;
+              opacity: 0.8;
 
-            a {
-              color: red;
-            } //nav links
+              &::before {
+                display: none;
+              }
 
-          } // li
+              a {
+                color: red;
+              } //nav links
+
+            } // li
+
 
         } //nav items
 
@@ -529,7 +542,7 @@ Orange color: #e67e22
       } //nav
 
       .order-now {
-        margin-top: 40%;
+        margin-top: 60%;
         a {
           button {
             width: 80%;
@@ -543,13 +556,18 @@ Orange color: #e67e22
     } //header
 
     .story {
+      padding-bottom: 40px;
       p {
 
       }//p
     }//story
 
     .menu {
+      display: none;
       .row {
+        h2 {
+
+        }
         img {
           display: none;
         }
@@ -588,36 +606,25 @@ Orange color: #e67e22
 
 
     .find_us {
-
+      overflow: hidden;
+      width: 100vw;
+      padding: 20px 0;
+      margin: 0;
+      #map {
+        // padding: 20px 0;
+        // width: 90%;
+        display: block;
+        margin: 0 auto;
+      }
     }
-    .find_us * {
 
-    }
-    .find_us #map {
-
-    }
-    .find_us .contact {
-
-    }
 
     footer {
       width: 100vw;
-
-      h1 {
-
-      }
-      .social-links {
-
-      }
+      overflow: hidden;
       .credits {
         padding: 0;
         width: 100vw;
-
-          &:nth-child(2) {
-
-          }
-
-
       }
     }
 

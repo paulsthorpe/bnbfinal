@@ -143,7 +143,7 @@
                     </ul>
                 </div>
 
-            <div class="row">
+            <div class="row credits">
                 <p class="col-lg-12">
                   &copy; <?php echo date('Y') ?> Best-N-Burgers
                 </p>
