@@ -240,8 +240,15 @@ $fonts: 'Lato', Helvetica, sans-serif;
           color: $white;
         }
 
+        .past-order {
+          border: 1px solid $white;
+          text-align: center;
+          margin: 15px 0;
+          cursor: pointer;
+        }
 
-      }
+
+      }//welcome
     } //welcome-component
 
     .selector-wrapper {
@@ -744,10 +751,14 @@ $fonts: 'Lato', Helvetica, sans-serif;
 
 
       }//welcome
+
       .past-order {
         border: 1px solid $white;
         text-align: center;
+        margin: 15px 0;
+        cursor: pointer;
       }
+
     } //welcome-component
 
     .options-wrapper {

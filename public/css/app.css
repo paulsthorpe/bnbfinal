@@ -430,6 +430,11 @@ Orange color: #e67e22
         .order-wrapper .welcome-component .welcome .review:hover,
         .order-wrapper .welcome-component .welcome .review:active {
           color: #fff; }
+        .order-wrapper .welcome-component .welcome .past-order {
+          border: 1px solid #fff;
+          text-align: center;
+          margin: 15px 0;
+          cursor: pointer; }
     .order-wrapper .selector-wrapper {
       width: 100%; }
       .order-wrapper .selector-wrapper .selector-header {
@@ -783,7 +788,9 @@ Orange color: #e67e22
           color: #fff; }
       .order-wrapper .welcome-component .past-order {
         border: 1px solid #fff;
-        text-align: center; }
+        text-align: center;
+        margin: 15px 0;
+        cursor: pointer; }
     .order-wrapper .options-wrapper {
       width: 50%;
       margin: 0 auto 0 50px; }
