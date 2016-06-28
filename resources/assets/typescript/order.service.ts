@@ -44,11 +44,13 @@ export class OrderService {
 
   addToOrder(item){
     this.order.push(item);
+    //clear previous array to avoid duplication
     this.apiAdditionals = [];
   }
 
   addToCart(item){
     this.cart.push(item);
+    //clear previous arrays to avoid duplication
     this.cartPrices = [];
     this.cartAdditionals = [];
   }

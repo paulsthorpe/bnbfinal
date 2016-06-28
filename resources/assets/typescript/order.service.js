@@ -37,9 +37,12 @@ System.register(['rxjs/add/operator/map', '@angular/core'], function(exports_1, 
                 }
                 OrderService.prototype.addToOrder = function (item) {
                     this.order.push(item);
+                    this.apiAdditionals = [];
                 };
                 OrderService.prototype.addToCart = function (item) {
                     this.cart.push(item);
+                    this.cartPrices = [];
+                    this.cartAdditionals = [];
                 };
                 OrderService.prototype.formatPrice = function (input) {
                     return (input / 100).toFixed(2);
