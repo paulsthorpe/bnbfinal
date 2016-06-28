@@ -95,8 +95,8 @@ add( idValue, nameValue, prices, event ) {
     this.cartAdditionals.splice(index,1);
     this.cartPrices.splice(index,1);
   }
-  // console.log(this.cartAdditionals);
-  // console.log(this.cartPrices);
+  console.log(this.cartAdditionals);
+  console.log(this.cartPrices);
 }
 
 
@@ -110,10 +110,12 @@ create(id, price, item) {
     additionals : this.apiAdditionals
   };
 
+
+
   //push interface object into API array
   this.addToOrder(this.apiItem);
 
-  // console.log(this.orderService.order);
+  console.log(this.order);
 
 
 
@@ -129,7 +131,7 @@ create(id, price, item) {
   //push interface object into API array
   this.addToCart(this.cartItem);
   this.itemPrices.push(this.total);
-  // console.log(this.orderService.cart);
+  console.log(this.cart);
 }
 
 
