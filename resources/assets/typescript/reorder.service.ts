@@ -111,9 +111,6 @@ export class ReorderService {
         .subscribe(data => this.applyOrder(data, orderIndex, index));
     }
 
-    //clear past orders to reduce clutter
-    this.pastOrders = [];
-    this.pastOrdersClient = [];
   }
 
   applyOrder(data, orderIndex, itemIndex){
