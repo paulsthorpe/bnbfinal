@@ -54,9 +54,6 @@ Route::get('/order/{any}/{all}', function () {
     return view('order_app');
 });
 
-Route::get('/order/{any}/{any}/{all}', function () {
-    return view('order_app');
-});
 
 //API Routes
 
