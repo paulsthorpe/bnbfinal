@@ -97,7 +97,9 @@ System.register(['rxjs/add/operator/map', '@angular/core', './order.service', '.
                     for (var itemIndex = 0; itemIndex < total; itemIndex++) {
                         _loop_1();
                     }
+                    //clear past orders to reduce clutter
                     this.pastOrders = [];
+                    this.pastOrdersClient = [];
                 };
                 ReorderService.prototype.applyOrder = function (data, orderIndex, itemIndex) {
                     var length = data.length;

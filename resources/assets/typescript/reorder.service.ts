@@ -113,6 +113,7 @@ export class ReorderService {
 
     //clear past orders to reduce clutter
     this.pastOrders = [];
+    this.pastOrdersClient = [];
   }
 
   applyOrder(data, orderIndex, itemIndex){
