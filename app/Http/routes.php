@@ -36,8 +36,6 @@ Route::get('/user_path', function () {
 });
 
 
-
-
 /**
 *
 *Order System and Order System API Routes
@@ -45,6 +43,18 @@ Route::get('/user_path', function () {
 */
 
 Route::get('/order', function () {
+    return view('order_app');
+});
+
+Route::get('/order/{all}', function () {
+    return view('order_app');
+});
+
+Route::get('/order/{any}/{all}', function () {
+    return view('order_app');
+});
+
+Route::get('/order/{any}/{any}/{all}', function () {
     return view('order_app');
 });
 
