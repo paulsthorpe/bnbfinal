@@ -340,8 +340,10 @@ Orange color: #e67e22
             right: 50px;
             top: 40px;
             background-color: red;
+            display: flex;
             i {
-              display: inline-block;
+              display: inline-flex;
+              flex: 1;
             }
           }
           .logo {
@@ -494,6 +496,7 @@ Orange color: #e67e22
           background-color: red;
           display: flex;
           i {
+            display: inline-flex;
             font-size: .7em;
             flex: 1;
           }

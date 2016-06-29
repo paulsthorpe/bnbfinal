@@ -233,7 +233,14 @@ Orange color: #e67e22
     position: absolute;
     right: 50px;
     top: 40px;
-    background-color: red; }
+    background-color: red;
+    display: -ms-flexbox;
+    display: flex; }
+    .homepage header nav .drop-button i {
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -ms-flex: 1;
+      flex: 1; }
   .homepage header nav .nav-items {
     display: block;
     position: absolute;
@@ -279,6 +286,8 @@ Orange color: #e67e22
     display: -ms-flexbox;
     display: flex; }
     .homepage header nav .drop-button i {
+      display: -ms-inline-flexbox;
+      display: inline-flex;
       font-size: .7em;
       -ms-flex: 1;
       flex: 1; }
