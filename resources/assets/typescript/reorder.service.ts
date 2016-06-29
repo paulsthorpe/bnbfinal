@@ -46,6 +46,80 @@ export class ReorderService {
 
     }
 
+    /**
+     * Possibly removed, not sure if it has future use
+     * @param data
+     */
+    orgData(data) {
+        let length = data.length;
+
+        for (var i = 0; i < length; i++) {
+            let pastOrder = [];
+
+            let items = data[i].items.length;
+            let col = [];
+            for (var a = 0; a < items; a++) {
+                let oItem = [];
+
+                let tops = data[i].items[a].additionals.length;
+                let toppings = [];
+                for (var b = 0; b < tops; b++) {
+                    toppings.push(data[i].items[a].additionals[b]);
+                }
+
+                oItem['item_id'] = data[i].items[a].item_id;
+                oItem['additionals'] = toppings;
+
+                col.push(oItem);
+            }
+
+            pastOrder['order_id'] = data[i].order_id;
+            pastOrder['items'] = col;
+
+
+            this.pastOrders.push(pastOrder);
+
+        }
+
+
+    }
+
+    /**
+     * Possibly removed, not sure if it has future use
+     * @param data
+     */
+    orgDataClient(data) {
+
+        let length = data.length;
+
+        for (var i = 0; i < length; i++) {
+            let pastOrder = [];
+
+            let items = data[i].items.length;
+            let col = [];
+            for (var a = 0; a < items; a++) {
+                let oItem = [];
+
+                let tops = data[i].items[a].additionals.length;
+                let toppings = [];
+                for (var b = 0; b < tops; b++) {
+                    toppings.push(data[i].items[a].additionals[b]);
+                }
+
+                oItem['name'] = data[i].items[a].name;
+                oItem['price'] = data[i].items[a].price;
+                oItem['additionals'] = toppings;
+
+                col.push(oItem);
+            }
+
+            pastOrder['order_id'] = data[i].order_id;
+            pastOrder['items'] = col;
+            this.pastOrdersClient.push(pastOrder);
+
+        }
+    }
+
 
 
     /**
@@ -124,79 +198,7 @@ export class ReorderService {
 
     }
 
-    /**
-     * Possibly removed, not sure if it has future use
-     * @param data
-     */
-    orgData(data) {
-        let length = data.length;
 
-        for (var i = 0; i < length; i++) {
-            let pastOrder = [];
-
-            let items = data[i].items.length;
-            let col = [];
-            for (var a = 0; a < items; a++) {
-                let oItem = [];
-
-                let tops = data[i].items[a].additionals.length;
-                let toppings = [];
-                for (var b = 0; b < tops; b++) {
-                    toppings.push(data[i].items[a].additionals[b]);
-                }
-
-                oItem['item_id'] = data[i].items[a].item_id;
-                oItem['additionals'] = toppings;
-
-                col.push(oItem);
-            }
-
-            pastOrder['order_id'] = data[i].order_id;
-            pastOrder['items'] = col;
-
-
-            this.pastOrders.push(pastOrder);
-
-        }
-
-
-    }
-
-    /**
-     * Possibly removed, not sure if it has future use
-     * @param data
-     */
-    orgDataClient(data) {
-
-        let length = data.length;
-
-        for (var i = 0; i < length; i++) {
-            let pastOrder = [];
-
-            let items = data[i].items.length;
-            let col = [];
-            for (var a = 0; a < items; a++) {
-                let oItem = [];
-
-                let tops = data[i].items[a].additionals.length;
-                let toppings = [];
-                for (var b = 0; b < tops; b++) {
-                    toppings.push(data[i].items[a].additionals[b]);
-                }
-
-                oItem['name'] = data[i].items[a].name;
-                oItem['price'] = data[i].items[a].price;
-                oItem['additionals'] = toppings;
-
-                col.push(oItem);
-            }
-
-            pastOrder['order_id'] = data[i].order_id;
-            pastOrder['items'] = col;
-            this.pastOrdersClient.push(pastOrder);
-
-        }
-    }
 
 }
 

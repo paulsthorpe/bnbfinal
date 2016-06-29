@@ -40,12 +40,24 @@ System.register(['@angular/core', './cart.component', './order.service', './reor
             }],
         execute: function() {
             WelcomeComponent = (function () {
+                /**
+                 * inject services
+                 * @param _httpService
+                 * @param orderService
+                 * @param _validators
+                 * @param router
+                 * @param reorderService
+                 */
                 function WelcomeComponent(_httpService, orderService, _validators, router, reorderService) {
                     this._httpService = _httpService;
                     this.orderService = orderService;
                     this._validators = _validators;
                     this.router = router;
                     this.reorderService = reorderService;
+                    /**
+                     * form for retrieving users past orders
+                     * @type {ControlGroup}
+                     */
                     this.form = new common_1.ControlGroup({
                         phoneLookup: new common_1.Control('', common_1.Validators.compose([common_1.Validators.required,
                             this._validators.cannotContainSpace,
@@ -55,15 +67,28 @@ System.register(['@angular/core', './cart.component', './order.service', './reor
                 }
                 WelcomeComponent.prototype.ngOnInit = function () {
                 };
+                /**
+                 * call reorder service method to post to api and recieve a response
+                 */
                 WelcomeComponent.prototype.getOrders = function () {
                     this.phone = {
                         phone: this.form.value.phoneLookup
                     };
                     this.reorderService.getOrders(this.phone);
                 };
+                /**
+                 * call reorder service method to build up a current order from prev order
+                 * @param orderIndex
+                 */
                 WelcomeComponent.prototype.retrieveOrderState = function (orderIndex) {
                     this.reorderService.retrieveOrderState(orderIndex);
                 };
+                /**
+                 * create a cart and api item from past order selected by user
+                 * @param data
+                 * @param orderIndex
+                 * @param itemIndex
+                 */
                 WelcomeComponent.prototype.applyOrder = function (data, orderIndex, itemIndex) {
                     this.reorderService.applyOrder(data, orderIndex, itemIndex);
                 };

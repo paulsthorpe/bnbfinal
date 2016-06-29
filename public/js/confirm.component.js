@@ -31,6 +31,10 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
             }],
         execute: function() {
             ConfirmComponent = (function () {
+                /**
+                 * inject orderservice
+                 * @param orderService
+                 */
                 function ConfirmComponent(orderService) {
                     this.orderService = orderService;
                     this.cust = this.orderService.customer;

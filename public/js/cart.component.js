@@ -28,11 +28,18 @@ System.register(['@angular/core', '@angular/http', '@angular/router-deprecated',
             }],
         execute: function() {
             CartComponent = (function () {
+                /**
+                 * inject orderService and router, orderservice is public so data can be shared
+                 * between views, instead of creating a new instance in each component that needs it
+                 * @param orderService
+                 * @param router
+                 */
                 function CartComponent(orderService, router) {
                     this.orderService = orderService;
                     this.router = router;
                 }
                 CartComponent.prototype.ngOnInit = function () {
+                    //create cart instance from items in orderservice cart
                     this.cart = this.orderService.cart;
                     if (this.cart.length > 0) {
                         //get all item prices and reduce for total
@@ -43,6 +50,11 @@ System.register(['@angular/core', '@angular/http', '@angular/router-deprecated',
                         this.subtotal = this.tax + this.totalPrice;
                     }
                 };
+                /**
+                 * User clicks minus icon on cart item, calling this method which is fed the items
+                 * array index. the item is spliced from the array at that index
+                 * @param item
+                 */
                 CartComponent.prototype.deleteItem = function (item) {
                     //delete objects related to user input
                     this.orderService.cart.splice(item, 1);
@@ -54,6 +66,12 @@ System.register(['@angular/core', '@angular/http', '@angular/router-deprecated',
                     this.tax = this.orderService.calcTax(this.totalPrice);
                     this.subtotal = this.tax + this.totalPrice;
                 };
+                /**
+                 * User clicks plus icon in view, calling this method which is fed the items
+                 * array index, item is copied temporarily and then push back into the order as a duplicate
+                 *
+                 * @param item
+                 */
                 CartComponent.prototype.addItem = function (item) {
                     //grab and store objects concerning user input
                     this.cartItem = this.orderService.cart[item];
@@ -61,13 +79,19 @@ System.register(['@angular/core', '@angular/http', '@angular/router-deprecated',
                     //create duplicate instances of objects and add to api/cart arrays
                     this.orderService.cart.push(this.cartItem);
                     this.orderService.order.push(this.orderItem);
+                    //increase price accordingly
                     this.orderService.itemPrices.push(this.cartItem.total);
                     this.totalPrice = this.orderService.itemPrices.reduce(function (total, num) {
                         return total + num;
                     });
+                    //calculate tax and add to cart total, to form subtotal
                     this.tax = this.orderService.calcTax(this.totalPrice);
                     this.subtotal = this.tax + this.totalPrice;
                 };
+                /**
+                 * check if type is number, for debugging purposes
+                 * @param val
+                 */
                 CartComponent.prototype.isNumber = function (val) {
                     return typeof val === 'number';
                 };

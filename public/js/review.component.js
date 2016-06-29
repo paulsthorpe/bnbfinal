@@ -41,6 +41,10 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
                     this._httpService = _httpService;
                     this.orderService = orderService;
                     this.router = router;
+                    /**
+                     * form for user data input
+                     * @type {ControlGroup}
+                     */
                     this.form = new common_1.ControlGroup({
                         name: new common_1.Control('', common_1.Validators.compose([common_1.Validators.required,
                             this.cannotContainSpecialChars])),
@@ -50,6 +54,12 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
                             this.phoneLength])),
                     });
                 }
+                /**
+                 * get user info from form,push to api array
+                 * send order to api, save customer info to display in confirm view
+                 * set order conplete to true
+                 * navigate to confirm view
+                 */
                 ReviewComponent.prototype.sendOrder = function () {
                     this.custInfo = {
                         name: this.form.value.name,
@@ -62,6 +72,11 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
                     this.orderService.orderComplete = true;
                     this.router.navigate(['Confirm']);
                 };
+                /**
+                 * validator to prevent space in input
+                 * @param control
+                 * @returns {any}
+                 */
                 ReviewComponent.prototype.cannotContainSpace = function (control) {
                     if (control.value.indexOf(' ') >= 0) {
                         return { cannotContainChars: true };
@@ -70,6 +85,11 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
                         return null;
                     }
                 };
+                /**
+                 * validator to prevent typical phone formats, we want just plain numbers
+                 * @param control
+                 * @returns {any}
+                 */
                 ReviewComponent.prototype.cannotContainSpecialChars = function (control) {
                     if (control.value.indexOf('/') >= 0) {
                         return { cannotContainChars: true };
@@ -87,6 +107,11 @@ System.register(['@angular/core', './cart.component', './order.service', '@angul
                         return null;
                     }
                 };
+                /**
+                 * validator to ensure phone number is proper length
+                 * @param control
+                 * @returns {any}
+                 */
                 ReviewComponent.prototype.phoneLength = function (control) {
                     if (control.value.length >= 11) {
                         return { phoneLength: true };

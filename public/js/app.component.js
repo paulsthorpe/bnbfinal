@@ -46,6 +46,10 @@ System.register(['@angular/core', '@angular/router-deprecated', './http.service'
             }],
         execute: function() {
             AppComponent = (function () {
+                /**
+                 *
+                 * @param _httpService
+                 */
                 function AppComponent(_httpService) {
                     this._httpService = _httpService;
                 }

@@ -6,10 +6,6 @@ $(document).ready(function(){
   $('item_id_check').click(function(){
     $(this).trigger('click');
   });
-
-  $('.drop-button').click(function(){
-    $('.nav-items').toggleClass('show');
-  });
 });
 
 //# sourceMappingURL=scripts.js.map
