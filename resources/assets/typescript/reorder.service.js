@@ -26,23 +26,12 @@ System.register(['rxjs/add/operator/map', '@angular/core', './order.service', '.
             }],
         execute: function() {
             ReorderService = (function () {
-                /**
-                 *
-                 * @param _httpService
-                 * @param orderService
-                 */
                 function ReorderService(_httpService, orderService) {
                     this._httpService = _httpService;
                     this.orderService = orderService;
                     this.pastOrders = [];
                     this.pastOrdersClient = [];
                 }
-                /**
-                 * This method will make to calls to the api based on user input, one to get
-                 * user relevant data, the other to get api relevant data(from past orders)
-                 * maybe this should be one call and a bigger array, for now it stays like this
-                 * @param phone
-                 */
                 ReorderService.prototype.getOrders = function (phone) {
                     var _this = this;
                     this._httpService.getOrders(phone)
@@ -50,10 +39,6 @@ System.register(['rxjs/add/operator/map', '@angular/core', './order.service', '.
                     this._httpService.getOrdersClient(phone)
                         .subscribe(function (data) { return _this.orgDataClient(data); });
                 };
-                /**
-                 * Possibly removed, not sure if it has future use
-                 * @param data
-                 */
                 ReorderService.prototype.orgData = function (data) {
                     var length = data.length;
                     for (var i = 0; i < length; i++) {
@@ -76,11 +61,8 @@ System.register(['rxjs/add/operator/map', '@angular/core', './order.service', '.
                         this.pastOrders.push(pastOrder);
                     }
                 };
-                /**
-                 * Possibly removed, not sure if it has future use
-                 * @param data
-                 */
                 ReorderService.prototype.orgDataClient = function (data) {
+                    console.log(data);
                     var length = data.length;
                     for (var i = 0; i < length; i++) {
                         var pastOrder = [];
@@ -103,68 +85,35 @@ System.register(['rxjs/add/operator/map', '@angular/core', './order.service', '.
                         this.pastOrdersClient.push(pastOrder);
                     }
                 };
-                /**
-                 * Retrieve the index from user click event and fire applyOrder()
-                 * @param orderIndex
-                 */
                 ReorderService.prototype.retrieveOrderState = function (orderIndex) {
-                    var _this = this;
                     var total = this.pastOrders[orderIndex].items.length;
-                    var _loop_1 = function() {
-                        var index = itemIndex;
-                        this_1._httpService.getSpecificAddOns(this_1.pastOrders[orderIndex].items[itemIndex].additionals)
-                            .subscribe(function (data) { return _this.applyOrder(data, orderIndex, index); });
-                    };
-                    var this_1 = this;
                     for (var itemIndex = 0; itemIndex < total; itemIndex++) {
-                        _loop_1();
+                        var index = itemIndex;
+                        console.log(index);
                     }
                 };
-                /**
-                 * This method retrieves which order a user clicks on from retrieveOrderState, retrieves the array index,
-                 * which is supplied to the view by the array that feeds it(pastOrdersClient) and then in turn builds the standard
-                 * application array that displays order data to the user.
-                 *
-                 * Once this process is complete it does the same process, but for the array that contains api item interfaces
-                 * which will be sent to the api for processing
-                 * @param data
-                 * @param orderIndex
-                 * @param itemIndex
-                 */
                 ReorderService.prototype.applyOrder = function (data, orderIndex, itemIndex) {
-                    //Initialize length to serve as the index for the iteration below
                     var length = data.length;
-                    //Set these properties to empty array to ensure they are empty before using them.
-                    //You never know....
                     this.orderService.apiAdditionals = [];
                     this.orderService.cartAdditionals = [];
                     this.orderService.cartPrices = [];
-                    //store the cart total
                     this.orderService.cartPrices.push(this.pastOrdersClient[orderIndex].items[itemIndex].price);
                     for (var i = 0; i < length; i++) {
-                        //foreach topping in the api and client past order arrays, push to our default arrays
                         this.orderService.apiAdditionals.push(data[i].id);
                         this.orderService.cartAdditionals.push(data[i].name);
-                        //store individual item prices in client order
                         this.orderService.cartPrices.push(data[i].price);
-                        //store individual prices in api order
-                        this.orderService.total = this.orderService.cartPrices.reduce(function (total, num) {
-                            return total + num;
-                        });
+                        this.orderService.total = this.orderService.cartPrices.reduce(function (total, num) { return total + num; });
                     }
-                    //create order item interface to store in our api order array
                     this.apiItem = {
                         item_id: this.pastOrders[orderIndex].items[itemIndex].item_id,
                         additionals: this.orderService.apiAdditionals
                     };
-                    //create order item interface in our client order array
                     this.cartItem = {
                         name: this.pastOrdersClient[orderIndex].items[itemIndex].name,
                         additionals: this.orderService.cartAdditionals,
                         prices: this.orderService.cartPrices,
                         total: this.orderService.total,
                     };
-                    //push the interfaces o its respective destination, client or api
                     this.orderService.addToOrder(this.apiItem);
                     this.orderService.addToCart(this.cartItem);
                     this.orderService.itemPrices.push(this.orderService.total);
