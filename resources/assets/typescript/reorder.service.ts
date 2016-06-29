@@ -105,17 +105,18 @@ export class ReorderService {
   }
 
   retrieveOrderState(orderIndex){
-    this.totalItems = this.pastOrders[orderIndex].items.length;
     console.log(this.pastOrders);
-    console.log(this.totalItems);
-
-    for(var itemIndex = 0; itemIndex < this.totalItems; itemIndex++){
-        let index = itemIndex;
-
-
-        this._httpService.getSpecificAddOns(this.pastOrders[orderIndex].items[itemIndex].additionals)
-        .subscribe(data => this.applyOrder(data, orderIndex, index));
-    }
+    // this.totalItems = this.pastOrders[orderIndex].items.length;
+    // console.log(this.pastOrders);
+    // console.log(this.totalItems);
+    //
+    // for(var itemIndex = 0; itemIndex < this.totalItems; itemIndex++){
+    //     let index = itemIndex;
+    //
+    //
+    //     this._httpService.getSpecificAddOns(this.pastOrders[orderIndex].items[itemIndex].additionals)
+    //     .subscribe(data => this.applyOrder(data, orderIndex, index));
+    // }
 
   }
 
