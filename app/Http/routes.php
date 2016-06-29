@@ -15,13 +15,11 @@
 */
 
 
-
-
 /**
-*
-* Homepage Routes
-*
-*/
+ *
+ * Homepage Routes
+ *
+ */
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,15 +35,17 @@ Route::get('/user_path', function () {
 
 
 /**
-*
-*Order System and Order System API Routes
-*
-*/
+ *
+ *Order System and Order System API Routes
+ *
+ */
 
 Route::get('/order', function () {
     return view('order_app');
 });
 
+
+//wildcard routes for angular
 Route::get('/order/{all}', function () {
     return view('order_app');
 });
@@ -58,17 +58,17 @@ Route::get('/order/{any}/{all}', function () {
 //API Routes
 
 Route::get('/getItems', function () {
-  $items = App\MenuItem::all();
-  return $items;
+    $items = App\MenuItem::all();
+    return $items;
 });
 
 Route::get('/getItems/{item}', function (App\MenuItem $item) {
-  return $item;
+    return $item;
 });
 
 Route::get('/getAddOns', function () {
-  $items = App\AddOn::all();
-  return $items;
+    $items = App\AddOn::all();
+    return $items;
 });
 
 Route::post('/recieveAPI', 'OrdersController@store');
@@ -78,10 +78,6 @@ Route::post('/getOrders', 'OrdersController@getOrders');
 Route::post('/getOrdersClient', 'OrdersController@getOrdersClient');
 
 Route::post('/getSpecificAddOns', 'OrdersController@getSpecificAddOns');
-
-
-
-
 
 
 /*
@@ -130,8 +126,6 @@ Route::get('/admin/sales/edit', 'SalesController@edit');
 Route::delete('/admin/sales/destroy/{id}', 'SalesController@delete');
 
 
-
-
 /**
  * Admin/Employee Routes
  *
@@ -159,8 +153,6 @@ Route::get('/admin/employee/delete/{employee}', 'EmployeesController@check_delet
 Route::delete('/admin/employee/{employee}', 'EmployeesController@delete');
 
 
-
-
 /**
  * Timeclock Routes
  *
@@ -182,8 +174,6 @@ Route::get('/admin/period_hours/{employee}/add', 'TimeController@add_hours');
 Route::delete('/admin/period_hours/delete/{id}', 'TimeController@delete_hours');
 
 
-
-
 /**
  * Admin/Application Routes
  *
@@ -197,33 +187,27 @@ Route::get('/admin/view_apps/{id}', 'ApplicationsController@view_by_index');
 Route::get('/admin/view_apps/{id}/delete', 'ApplicationsController@delete');
 
 
-
-
 /**
  * Admin/Online Order Routes
  *
  *
  */
 
- Route::get('/admin/orders', 'OrdersController@index');
+Route::get('/admin/orders', 'OrdersController@index');
 
- Route::get('/admin/orders/today', 'OrdersController@list_today');
+Route::get('/admin/orders/today', 'OrdersController@list_today');
 
- Route::get('/admin/orders/{id}', 'OrdersController@by_index');
+Route::get('/admin/orders/{id}', 'OrdersController@by_index');
 
- Route::get('/admin/orders/completed/{order}', 'OrdersController@mark_complete');
+Route::get('/admin/orders/completed/{order}', 'OrdersController@mark_complete');
 
- Route::delete('/admin/orders/delete/{id}', 'OrdersController@delete');
+Route::delete('/admin/orders/delete/{id}', 'OrdersController@delete');
 
- Route::get('/orderApp', 'OrdersController@orderApp');
+Route::get('/orderApp', 'OrdersController@orderApp');
 
- Route::get('/orderApp/{id}', 'OrdersController@orderAppByIndex');
-
-
+Route::get('/orderApp/{id}', 'OrdersController@orderAppByIndex');
 
 
-
-
- Route::get('/admin/applications', function () {
-     return view('admin.panel.applications_list');
- });
+Route::get('/admin/applications', function () {
+    return view('admin.panel.applications_list');
+});

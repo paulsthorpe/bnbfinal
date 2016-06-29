@@ -34,6 +34,10 @@ import {ConfirmComponent} from './confirm.component';
 
 export class AppComponent {
 
+    /**
+     * 
+     * @param _httpService
+     */
     constructor(private _httpService:RequestService) {
     }
 

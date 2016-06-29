@@ -25,11 +25,18 @@ export class CartComponent {
     cartItem:any;
     orderItem:any;
 
+    /**
+     * inject orderService and router, orderservice is public so data can be shared
+     * between views, instead of creating a new instance in each component that needs it
+     * @param orderService
+     * @param router
+     */
     constructor(public orderService:OrderService, private router:Router) {
     }
 
     ngOnInit() {
 
+        //create cart instance from items in orderservice cart
         this.cart = this.orderService.cart;
 
         if (this.cart.length > 0) {
@@ -43,6 +50,11 @@ export class CartComponent {
 
     }
 
+    /**
+     * User clicks minus icon on cart item, calling this method which is fed the items
+     * array index. the item is spliced from the array at that index
+     * @param item
+     */
     deleteItem(item) {
         //delete objects related to user input
         this.orderService.cart.splice(item, 1);
@@ -55,6 +67,12 @@ export class CartComponent {
         this.subtotal = this.tax + this.totalPrice;
     }
 
+    /**
+     * User clicks plus icon in view, calling this method which is fed the items
+     * array index, item is copied temporarily and then push back into the order as a duplicate
+     * 
+     * @param item
+     */
     addItem(item) {
         //grab and store objects concerning user input
         this.cartItem = this.orderService.cart[item];
@@ -62,14 +80,20 @@ export class CartComponent {
         //create duplicate instances of objects and add to api/cart arrays
         this.orderService.cart.push(this.cartItem);
         this.orderService.order.push(this.orderItem);
+        //increase price accordingly
         this.orderService.itemPrices.push(this.cartItem.total);
         this.totalPrice = this.orderService.itemPrices.reduce(function (total, num) {
             return total + num
         });
+        //calculate tax and add to cart total, to form subtotal
         this.tax = this.orderService.calcTax(this.totalPrice);
         this.subtotal = this.tax + this.totalPrice;
     }
 
+    /**
+     * check if type is number, for debugging purposes
+     * @param val
+     */
     isNumber(val) {
         return typeof val === 'number';
     }

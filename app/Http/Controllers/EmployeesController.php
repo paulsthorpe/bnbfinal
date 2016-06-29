@@ -12,18 +12,22 @@ class EmployeesController extends Controller
 {
 
 
-  /**
-   *  query all employees and pass to view,
-   *  this view shows all employees
-   *
-   */
+    /**
+     *  query all employees and pass to view,
+     *  this view shows all employees
+     *
+     */
 
 
-    public function index(){
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
+    {
 
-      $employees = Employee::all();
+        $employees = Employee::all();
 
-      return view('admin.employee.view_employees', compact('employees'));
+        return view('admin.employee.view_employees', compact('employees'));
 
     }
 
@@ -36,9 +40,13 @@ class EmployeesController extends Controller
      */
 
 
-    public function add(){
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function add()
+    {
 
-      return view('admin.employee.add_employee');
+        return view('admin.employee.add_employee');
     }
 
 
@@ -52,23 +60,28 @@ class EmployeesController extends Controller
      */
 
 
-    public function create(Request $request){
-      //make new employee model
-      $employee = new Employee;
-      //assign data
-      $employee->id = $request->employee_id;
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function create(Request $request)
+    {
+        //make new employee model
+        $employee = new Employee;
+        //assign data
+        $employee->id = $request->employee_id;
 
-      $employee->first_name = $request->first_name;
+        $employee->first_name = $request->first_name;
 
-      $employee->last_name = $request->last_name;
+        $employee->last_name = $request->last_name;
 
-      $employee->phone_no = $request->phone_no;
+        $employee->phone_no = $request->phone_no;
 
-      $employee->clocked_in = 0;
-      //persist model to database
-      $employee->save();
+        $employee->clocked_in = 0;
+        //persist model to database
+        $employee->save();
 
-      return redirect('/admin/employees');
+        return redirect('/admin/employees');
     }
 
 
@@ -80,9 +93,14 @@ class EmployeesController extends Controller
      */
 
 
-    public function edit(Employee $employee){
+    /**
+     * @param Employee $employee
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(Employee $employee)
+    {
 
-      return view('admin.employee.edit_employee', compact('employee'));
+        return view('admin.employee.edit_employee', compact('employee'));
 
     }
 
@@ -95,11 +113,17 @@ class EmployeesController extends Controller
      */
 
 
-    public function update(Request $request, Employee $employee){
+    /**
+     * @param Request $request
+     * @param Employee $employee
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function update(Request $request, Employee $employee)
+    {
 
-      $employee->update($request->all());
+        $employee->update($request->all());
 
-      return redirect('/admin/employees');
+        return redirect('/admin/employees');
     }
 
 
@@ -111,9 +135,14 @@ class EmployeesController extends Controller
      */
 
 
-    public function check_delete(Employee $employee){
-      return $employee;
-      // return view('admin.employee.check_delete', compact('employee'));
+    /**
+     * @param Employee $employee
+     * @return Employee
+     */
+    public function check_delete(Employee $employee)
+    {
+        return $employee;
+        // return view('admin.employee.check_delete', compact('employee'));
     }
 
 
@@ -125,10 +154,16 @@ class EmployeesController extends Controller
      */
 
 
-    public function delete(Employee $employee){
-      $employee->delete();
+    /**
+     * @param Employee $employee
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
+     */
+    public function delete(Employee $employee)
+    {
+        $employee->delete();
 
-      return redirect('/admin/employees');
+        return redirect('/admin/employees');
     }
 
 
@@ -140,10 +175,14 @@ class EmployeesController extends Controller
      */
 
 
-    public function time_index(){
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function time_index()
+    {
 
-      return view('admin.employee.hours_overview');
-      //view not made yet
+        return view('admin.employee.hours_overview');
+        //view not made yet
     }
 
 
@@ -155,10 +194,14 @@ class EmployeesController extends Controller
      */
 
 
-    public function time_by_index(){
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function time_by_index()
+    {
 
-      return view('admin.employee.employee_hours');
-      //view not made yet
+        return view('admin.employee.employee_hours');
+        //view not made yet
     }
 
 
@@ -170,9 +213,13 @@ class EmployeesController extends Controller
      */
 
 
-    public function edit_hours(){
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit_hours()
+    {
 
-      return view('admin.employee.edit_hours');
+        return view('admin.employee.edit_hours');
     }
 
 }

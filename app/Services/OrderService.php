@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Services;
+
 use Carbon\Carbon;
 use App\Order;
 use App\MenuItem;
 use App\ConfigItem;
 use App\AddOn;
-
 
 
 /*
@@ -20,25 +20,28 @@ use App\AddOn;
 |
 */
 
-class OrderService {
+class OrderService
+{
 
 
+    /**
+     *  Get all sales records for current month, the default sales view in admin
+     *
+     *
+     */
 
-  /**
-   *  Get all sales records for current month, the default sales view in admin
-   *
-   *
-   */
+    /**
+     * @return mixed
+     */
+    public static function todaysOrders()
+    {
 
+        $earlier = Carbon::today()->startOfDay();
 
-    public static function todaysOrders() {
+        $later = Carbon::today()->endOfDay();
 
-      $earlier = Carbon::today()->startOfDay();
-
-      $later = Carbon::today()->endOfDay();
-
-      return \DB::table('orders')->whereBetween('created_at', [$earlier, $later])
-      ->orderBy('created_at','DESC')->get();
+        return \DB::table('orders')->whereBetween('created_at', [$earlier, $later])
+            ->orderBy('created_at', 'DESC')->get();
 
     }
 
@@ -49,41 +52,47 @@ class OrderService {
      *
      */
 
-    public static function storeOrder($request) {
+
+    /**
+     * @param $request
+     * @return mixed
+     */
+    public static function storeOrder($request)
+    {
 
 
-            //create a variabe to hold all items prices
+        //create a variabe to hold all items prices
 
-            $total = 0;
-            $tax = 0;
+        $total = 0;
+        $tax = 0;
 
-            //get jsonp from angular2
+        //get jsonp from angular2
 
-            $jsonp = response()->json($request);
+        $jsonp = response()->json($request);
 
-            //remove metadata/headers/csrftoken
+        //remove metadata/headers/csrftoken
 
-            $cleanedJSONP = substr($jsonp, stripos($jsonp, "["));
+        $cleanedJSONP = substr($jsonp, stripos($jsonp, "["));
 
-            //create array from json string
+        //create array from json string
 
-            $json = json_decode($cleanedJSONP);
+        $json = json_decode($cleanedJSONP);
 
-            //instantiate new order
+        //instantiate new order
 
-            $order = new Order;
+        $order = new Order;
 
-            //save immediately, to allow attachment of products
+        //save immediately, to allow attachment of products
 
-            $order->save();
+        $order->save();
 
-            //for each json object
+        //for each json object
 
-            foreach($json as $key => $value) {
+        foreach ($json as $key => $value) {
 
-              //test if the object contains product data or customer info
+            //test if the object contains product data or customer info
 
-              if(isset($value->item_id)){
+            if (isset($value->item_id)) {
 
                 //instantiate a new configitem to allow pivot table records
                 //and relationships to be created
@@ -96,47 +105,49 @@ class OrderService {
                 $it = MenuItem::find($value->item_id);
                 $total += $it->price;
 
-                foreach($value->additionals as $topping ){
-                  $item->addOns()->attach($topping);
-                  $top = AddOn::find($topping);
-                  $total += $top->price;
+                foreach ($value->additionals as $topping) {
+                    $item->addOns()->attach($topping);
+                    $top = AddOn::find($topping);
+                    $total += $top->price;
                 } //foreach topping value in object->array
 
                 $item->menuItems()->attach($value->item_id);
                 $order->orderItems()->save($item);
 
-              }/*if object is item data*/
+            }/*if object is item data*/
 
-              else {
+            else {
 
                 $order->name = $value->name;
                 $order->phone = $value->phone;
 
-              }//else if object is cust data
+            }//else if object is cust data
 
-            }//foreach json object
+        }//foreach json object
 
-              $order->subtotal = $total;
-              $order->tax = $total * 0.0675;
-              $order->total = $total * 1.0675;
-              $order->save();
-              return $json;
-
-    }
-
-
-
-  /**
-   * Sorts sales records between two specific dates
-   *
-   *
-   */
-
-
-    public static function display($request) {
+        $order->subtotal = $total;
+        $order->tax = $total * 0.0675;
+        $order->total = $total * 1.0675;
+        $order->save();
+        return $json;
 
     }
 
+
+    /**
+     * Sorts sales records between two specific dates
+     *
+     *
+     */
+
+
+    /**
+     * @param $request
+     */
+    public static function display($request)
+    {
+
+    }
 
 
     /**
@@ -146,12 +157,14 @@ class OrderService {
      */
 
 
-    public static function saveRecord($request) {
-
+    /**
+     * @param $request
+     */
+    public static function saveRecord($request)
+    {
 
 
     }
 
 
-
-  } //end Sales class
+} //end Sales class

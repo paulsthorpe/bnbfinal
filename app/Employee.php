@@ -10,7 +10,7 @@ class Employee extends Model
 
     public $timestamps = false;
 
-    public function time(){
+    public function time() {
 
       return $this->hasMany(TimeRecord::class);
       

@@ -14,7 +14,7 @@ class Order extends Model
 
     }
 
-    public function displayOrder(){
+    public function displayOrder() {
 
       return $this->toJSON();
 

@@ -19,8 +19,11 @@ import {HTTP_PROVIDERS} from '@angular/http';
 export class ConfirmComponent {
 
     cust:any;
-    time:any;
 
+    /**
+     * inject orderservice
+     * @param orderService
+     */
     constructor(public orderService:OrderService) {
         this.cust = this.orderService.customer;
     }

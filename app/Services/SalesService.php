@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+
 use Carbon\Carbon;
 use App\Sale;
 
@@ -16,24 +17,28 @@ use App\Sale;
 |
 */
 
-class SalesService {
+class SalesService
+{
 
 
+    /**
+     *  Get all sales records for current month, the default sales view in admin
+     *
+     *
+     */
 
-  /**
-   *  Get all sales records for current month, the default sales view in admin
-   *
-   *
-   */
 
+    /**
+     * @return mixed
+     */
+    public static function findThisMonth()
+    {
 
-    public static function findThisMonth() {
+        $start = Carbon::now()->startOfMonth();
 
-      $start = Carbon::now()->startOfMonth();
+        $end = Carbon::now()->endOfMonth();
 
-      $end = Carbon::now()->endOfMonth();
-
-      return Sale::whereBetween('date', [$start, $end])->orderBy('date','DESC')->get();
+        return Sale::whereBetween('date', [$start, $end])->orderBy('date', 'DESC')->get();
 
     }
 
@@ -44,32 +49,42 @@ class SalesService {
      *
      */
 
-    public static function findSpecificDate($request) {
+    /**
+     * @param $request
+     * @return mixed
+     */
+    public static function findSpecificDate($request)
+    {
 
-      $start = Carbon::createFromFormat('m/d/Y', $request->date)->startOfDay();
+        $start = Carbon::createFromFormat('m/d/Y', $request->date)->startOfDay();
 
-      $end = Carbon::createFromFormat('m/d/Y', $request->date)->endOfDay();
+        $end = Carbon::createFromFormat('m/d/Y', $request->date)->endOfDay();
 
-      return Sale::whereBetween('date', [$start, $end])->get();
+        return Sale::whereBetween('date', [$start, $end])->get();
 
     }
 
 
 
-  /**
-   * Sorts sales records between two specific dates
-   *
-   *
-   */
+    /**
+     * Sorts sales records between two specific dates
+     *
+     *
+     */
 
 
-    public static function sort($request) {
+    /**
+     * @param $request
+     * @return mixed
+     */
+    public static function sort($request)
+    {
 
-      $start = Carbon::createFromFormat('m/d/Y', $request->start)->startOfDay();
+        $start = Carbon::createFromFormat('m/d/Y', $request->start)->startOfDay();
 
-      $end = Carbon::createFromFormat('m/d/Y', $request->end)->endOfDay();
+        $end = Carbon::createFromFormat('m/d/Y', $request->end)->endOfDay();
 
-      return Sale::whereBetween('date', [$start, $end])->orderBy('date', 'DESC')->get();
+        return Sale::whereBetween('date', [$start, $end])->orderBy('date', 'DESC')->get();
 
     }
 
@@ -82,29 +97,31 @@ class SalesService {
      */
 
 
-    public static function saveRecord($request) {
-      //instantiate a new sales record
-      $record = new Sale;
-      //persist request to db
-      $date = Carbon::parse($request->date);
+    /**
+     * @param $request
+     */
+    public static function saveRecord($request)
+    {
+        //instantiate a new sales record
+        $record = new Sale;
+        //persist request to db
+        $date = Carbon::parse($request->date);
 
-      $record->date = Carbon::parse($date->format('Y-m-d'));
+        $record->date = Carbon::parse($date->format('Y-m-d'));
 
-      $record->day = $request->day_select;
+        $record->day = $request->day_select;
 
-      $record->sales_total_dollars = $request->sales_total_dollars;
+        $record->sales_total_dollars = $request->sales_total_dollars;
 
-      $record->sales_total_cents = $request->sales_total_cents;
+        $record->sales_total_cents = $request->sales_total_cents;
 
-      $record->paid_outs = $request->paid_outs;
+        $record->paid_outs = $request->paid_outs;
 
-      $record->special = $request->special;
+        $record->special = $request->special;
 
-      $record->save();
+        $record->save();
 
     }
 
 
-
-
-  } //end Sales class
+} //end Sales class

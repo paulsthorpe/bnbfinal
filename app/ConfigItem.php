@@ -21,7 +21,7 @@ class ConfigItem extends Model
 
     }
 
-    public function addOns(){
+    public function addOns() {
 
       return $this->belongsToMany('App\AddOn');
 
