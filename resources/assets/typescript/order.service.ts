@@ -13,15 +13,15 @@ export class OrderService {
     contactInfo = [];
     customer:Cust;
     orderComplete:boolean = false;
-    
+
     addOn:AddOn;
     addOns = [];
-    
+
     //////CONFIGITEM PROPERTIES
-    
+
     qty:number;
     qtyMessage:string;
-    
+
     //store relevant config item data for display in angular cart
     cartAdditionals = [];
     cartPrices = [];
@@ -36,7 +36,7 @@ export class OrderService {
 
     constructor() {
     }
-    
+
     /**
      * push api item interface into api array, clear toppings array for next use
      * @param item
@@ -101,14 +101,14 @@ export class OrderService {
             this.apiAdditionals.push(idValue);
 
         }
-            
+
         //if UNchecked remove addOn ids from array to send to api
         else if (!event.target.checked) {
             let index = this.apiAdditionals.indexOf(idValue);
             this.apiAdditionals.splice(index, 1);
 
         }
- 
+
 
         //store addOn names to array to use for readable cart values
         if (event.target.checked) {
@@ -135,12 +135,12 @@ export class OrderService {
      * @param item
      */
     create(id, price, item) {
-        
+
         //add item price
         this.cartPrices.push(price);
         //reduce topping array values to a total for item price
         this.total = this.cartPrices.reduce(function (total, num) {
-            return total + num;
+            return total + num
         });
         // !!!!!!!!!!!!!!!!!!!FOR API!!!!!!!!!!!!!!!!!!!!!!!//
         //set interface with selected menuitem and addons
@@ -148,10 +148,10 @@ export class OrderService {
             item_id: item.id,
             additionals: this.apiAdditionals
         };
-        
+
         //push interface object into API array
         this.addToOrder(this.apiItem);
-        
+
         // !!!!!!!!!!!!!!!!!!!FOR CART!!!!!!!!!!!!!!!!!!!!!!!//
         //set interface with selected menuitem and addons
         this.cartItem = {
