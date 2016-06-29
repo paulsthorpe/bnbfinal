@@ -20,6 +20,8 @@ export class ReorderService {
 
   cartItem: ConfigCART;
 
+  totalItems: number;
+
   constructor(private _httpService: RequestService,
     public orderService : OrderService){
 
@@ -103,15 +105,16 @@ export class ReorderService {
   }
 
   retrieveOrderState(orderIndex){
-    let total = this.pastOrders[orderIndex].items.length;
+    this.totalItems = this.pastOrders[orderIndex].items.length;
+    console.log(this.pastOrders);
+    console.log(this.totalItems);
 
-
-    for(var itemIndex = 0; itemIndex < total; itemIndex++){
+    for(var itemIndex = 0; itemIndex < this.totalItems; itemIndex++){
         let index = itemIndex;
-        console.log(index);
-        // break;
-        // this._httpService.getSpecificAddOns(this.pastOrders[orderIndex].items[itemIndex].additionals)
-        // .subscribe(data => this.applyOrder(data, orderIndex, index));
+
+
+        this._httpService.getSpecificAddOns(this.pastOrders[orderIndex].items[itemIndex].additionals)
+        .subscribe(data => this.applyOrder(data, orderIndex, index));
     }
 
   }

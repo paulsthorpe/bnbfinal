@@ -86,10 +86,18 @@ System.register(['rxjs/add/operator/map', '@angular/core', './order.service', '.
                     }
                 };
                 ReorderService.prototype.retrieveOrderState = function (orderIndex) {
-                    var total = this.pastOrders[orderIndex].items.length;
-                    for (var itemIndex = 0; itemIndex < total; itemIndex++) {
+                    var _this = this;
+                    this.totalItems = this.pastOrders[orderIndex].items.length;
+                    console.log(this.pastOrders);
+                    console.log(this.totalItems);
+                    var _loop_1 = function() {
                         var index = itemIndex;
-                        console.log(index);
+                        this_1._httpService.getSpecificAddOns(this_1.pastOrders[orderIndex].items[itemIndex].additionals)
+                            .subscribe(function (data) { return _this.applyOrder(data, orderIndex, index); });
+                    };
+                    var this_1 = this;
+                    for (var itemIndex = 0; itemIndex < this.totalItems; itemIndex++) {
+                        _loop_1();
                     }
                 };
                 ReorderService.prototype.applyOrder = function (data, orderIndex, itemIndex) {
