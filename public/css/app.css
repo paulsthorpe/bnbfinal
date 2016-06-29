@@ -283,6 +283,8 @@ Orange color: #e67e22
     display: inline-block;
     text-align: center; }
     .homepage header nav .drop-button i {
+      position: relative;
+      top: -11px;
       display: inline-block;
       font-size: .7em; }
   .homepage header nav .logo {
