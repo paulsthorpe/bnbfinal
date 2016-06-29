@@ -105,6 +105,7 @@ export class ReorderService {
   retrieveOrderState(orderIndex){
     let total = this.pastOrders[orderIndex].items.length;
 
+
     for(var itemIndex = 0; itemIndex < total; itemIndex++){
         let index = itemIndex;
         console.log(index);
