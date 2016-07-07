@@ -13,6 +13,12 @@ class Employee extends Model
     public function time() {
 
       return $this->hasMany(TimeRecord::class);
-      
+
+    }
+
+    public function timeByDate() {
+
+      return $this->hasMany(TimeRecord::class)->orderBy('clock_in');
+
     }
 }

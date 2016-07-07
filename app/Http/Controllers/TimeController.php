@@ -40,7 +40,7 @@ class TimeController extends Controller
 
     /**
      *
-     *  Send employee, an thier time records to the view
+     *  Send employee, and their time records to the view
      *  This view shows detailed time records for the selected employee
      *
      */
@@ -53,7 +53,7 @@ class TimeController extends Controller
     public function employee_time(Employee $employee)
     {
 
-        $time_records = $employee->time;
+        $time_records = $employee->timeByDate;
 
         return view('admin.employee.time_by_employee', compact('employee', 'time_records'));
 

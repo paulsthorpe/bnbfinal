@@ -52,17 +52,17 @@
 
         </section> -->
 
-        <section class="menu" id="menu">
+        <!-- <section class="menu" id="menu">
             <div class="row">
                 <h2>Our Menu</h2>
             </div>
             <div class="row">
 
-                    <img src="/images/menu.JPG" alt="Best-N-Burgers Menu" class="app-screen js--wp-2">
+                    <img src="/images/menu.JPG" alt="Best-N-Burgers Menu" class="app-screen jswp-2">
 
 
             </div>
-        </section>
+        </section> -->
 
 
 
@@ -140,6 +140,7 @@
                     <ul class="social-links row">
                         <li><a href="https://www.facebook.com/Best-N-Burgers-602533856468836/"><i class="fa fa-facebook-square"></i></a></li>
                         <li><a href="https://www.instagram.com/bestnburgers/"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="http://www.yelp.com/biz/best-n-burgers-wilson"><i class="fa fa-yelp"></i></a></li>
                     </ul>
                 </div>
 
