@@ -51,7 +51,8 @@ elixir(function (mix) {
         paths.jqueryUi + "/jquery-ui.min.js",
         paths.tether + '/js/tether.js',
         paths.bootstrap + "/js/bootstrap.min.js",
-        paths.pusher + "/pusher.js"
+        paths.pusher + "/pusher.js",
+        "../../assets/js/slider.js",
     ], 'public/js/util_scripts.js');
 
 

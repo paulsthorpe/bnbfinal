@@ -5,7 +5,9 @@
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/css/app.css" charset="utf-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+
         <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
         <title>Best-N-Burgers</title>
     </head>
@@ -52,17 +54,23 @@
 
         </section> -->
 
-        <!-- <section class="menu" id="menu">
+        <section class="menu" id="menu">
             <div class="row">
                 <h2>Our Menu</h2>
             </div>
             <div class="row">
-
-                    <img src="/images/menu.JPG" alt="Best-N-Burgers Menu" class="app-screen jswp-2">
-
-
+              <div id="wowslider-container">
+            	<div class="ws_images"><ul>
+            	<li><img src="" alt="" title="Fresh Cheeseburgers <br> Best-N-Burgers Cheeseburgers are made from Ground Chuck thats is 100% certified Angus beef, hand patied and grilled to perfection with our Signature Cheese. It is then assembled with only the freshest ingredients of your choice." id="wows_0"/></li>
+            	<li><img src="" alt="" title="Nathan's and Briteleaf Hotdogs" id="wows_2"/></li>
+            	<li><img src="" title="Hand Cut French Fries <br> We select only perfectly sized Idaho potatoes and use 100% cholesterol free peanut oil for our handcrafted fries." id="wows_1"/></li>
+            	<li><img src="" alt="" title="Signature fresh squeezed Orangeades and Lemonades" id="wows_2"/></li>
+              <li><img src="" alt="" title="We also serve Dippin Dots" id="wows_2"/></li>
+            	</ul></div>
+            		<a href="#" class="ws_frame"></a>
+            	</div>
             </div>
-        </section> -->
+        </section>
 
 
 
@@ -156,12 +164,15 @@
         </footer>
 
     <script src="/js/scripts.js"></script>
+    <script type="text/javascript" src="/js/wowslider.js"></script>
+    <script type="text/javascript" src="/js/slider.js"></script>
 
     </body>
 
 </html>
 
 <style media="screen">
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
